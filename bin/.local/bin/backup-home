@@ -1,0 +1,14 @@
+#!/bin/sh
+
+rclone sync /home/lanius/.local/lib localgz:/.local/lib --exclude='cache/**,.cache/**,Cache/**,tmp/**'
+rclone sync /home/lanius/.local/share localgz:/.local/share --exclude='cache/**,.cache/**,Cache/**,tmp/**'
+rclone sync /home/lanius/.local/state localgz:/.local/state --exclude='cache/**,.cache/**,Cache/**,tmp/**'
+rclone sync /home/lanius/.local/podman localgz:/.local/podman --exclude='cache/**,.cache/**,Cache/**,tmp/**'
+rclone sync /home/lanius/.var localgz:/.var --exclude='cache/**,.cache/**,Cache/**,tmp/**'
+rclone sync /home/lanius/.config localgz:/.config --exclude='cache/**,.cache/**,Cache/**,tmp/**'
+rclone sync /home/lanius/Pictures localgz:/Pictures
+rclone sync /home/lanius/Documents localgz:/Documents
+rclone sync /home/lanius/KeePass localgz:/KeePass
+rclone sync /home/lanius/Projects/Org localgz:/Projects/Org
+rclone sync /home/lanius/.ssh localgz:/.ssh --exclude='cache/**,.cache/**,Cache/**,tmp/**'
+rclone sync /home/lanius/Videos localgz:/Videos --exclude='cache/**,.cache/**,Cache/**,tmp/**'

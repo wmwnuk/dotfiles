@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if ! tmux list-sessions | grep "$1"; then 
+    tmux new-session -s "$1" -d distrobox-host-exec distrobox-enter "$1"
+fi
+
+if [ -z "$TMUX" ]; then
+    tmux attach-session -t "$1"
+else
+    tmux switch-client -t "$1"
+fi

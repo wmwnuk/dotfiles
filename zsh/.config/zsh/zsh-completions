@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+for file in $(ls "$ZDOTDIR/completions.d")
+do
+   source "$ZDOTDIR/completions.d/$file"
+done

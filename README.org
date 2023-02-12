@@ -1,0 +1,7 @@
+#+title: My dotfiles
+
+#+begin_src sh
+stow ~/Projects/dotfiles/ -t ~ module
+#+end_src
+
+Modules 'old' and 'system' are not to be installed via stow.

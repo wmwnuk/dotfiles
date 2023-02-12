@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sync_file="$(pwd)/.sync"
+remote_dir="$2"
+
+cp ~/.local/bin/example.sync "$sync_file"
+
+sed -i "s/a_server/$1/g" "$sync_file"
+sed -i "s/a_project/$remote_dir/g" "$sync_file"
+
+chmod +x "$sync_file"

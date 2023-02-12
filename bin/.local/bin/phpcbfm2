@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+php ~/Projects/magento2/vendor/bin/phpcbf --standard=Magento2 "$@"

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+remote_server="a_server"
+local_dir="$(dirname "$0")/$2"
+remote_project="/home/wojtek/a_server.com/a_project"
+remote_dir="$remote_project/$2"
+file_to_sync="$3"
+
+if [ "upload" == "$1" ];then
+    ssh $remote_server "mkdir -p $remote_dir" && rsync -azcuv "$local_dir/$file_to_sync" "$remote_server:$remote_dir/$file_to_sync"
+elif [ 'download' == "$1" ];then
+    rsync -azcuv "$remote_server:$remote_dir/$file_to_sync" "$local_dir/$file_to_sync"
+fi

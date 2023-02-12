@@ -1,0 +1,65 @@
+Xcursor.theme: Bibata-Modern-Classic
+! Xcursor.size: 16
+
+*.foreground:    #a9b1d6
+*.background:    #1a1b26
+*.cursorColor:   #e0af68
+*.highlightColor:#33467c
+
+!!! normal
+*.color0: #32344a
+*.color1: #f7768e
+*.color2: #9ece6a
+*.color3: #e0af68
+*.color4: #7aa2f7
+*.color5: #ad8ee6
+*.color6: #449dab
+*.color7: #787c99
+
+!!! bright
+*.color8:  #444b6a
+*.color9:  #ff7a93
+*.color10: #b9f27c
+*.color11: #ff9e64
+*.color12: #7da6ff
+*.color13: #bb9af7
+*.color14: #0db9d7
+*.color15: #acb0d0
+
+!!! extended colors
+*.color16: #ff9e64
+*.color17: #db4b4b
+
+
+
+!!! Fonts
+!xterm*font: -*-terminus-*-*-*-*-18-*-*-*-*-*-iso10646-*
+!xterm*boldFont: -*-terminus-*-*-*-*-18-*-*-*-*-*-iso10646-*
+!xterm*italicFont: -*-terminus-*-*-*-*-18-*-*-*-*-*-iso10646-*
+
+
+!!! Enable copy/paste.
+xterm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+xterm*boldMode: false
+
+!!! Fonts
+!URxvt*font: -*-terminus-*-*-*-*-18-*-*-*-*-*-iso10646-*
+!URxvt*boldFont: -*-terminus-*-*-*-*-18-*-*-*-*-*-iso10646-*
+!URxvt*italicFont: -*-terminus-*-*-*-*-18-*-*-*-*-*-iso10646-*
+
+xterm*font: xft:SauceCodePro Nerd Font Mono:pixelsize=15
+URxvt*font: xft:SauceCodePro Nerd Font Mono:pixelsize=15
+
+!!! Enable copy/paste.
+URxvt*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+URxvt*boldMode: false
+!URxvt*letterSpace: +1
+!URxvt*transparent: true
+!URxvt*shading: 40
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.scrollBar: false
+!URxvt*depth: 32
+!URxvt*background: rgba:2E2E/3434/4040/CCCC
+
+Xft.dpi: 96

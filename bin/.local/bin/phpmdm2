@@ -1,0 +1,4 @@
+#!/bin/sh
+
+php ~/Projects/magento2/vendor/bin/phpmd "$@" text \
+    ~/Projects/magento2/dev/tests/static/testsuite/Magento/Test/Php/_files/phpmd/ruleset.xml

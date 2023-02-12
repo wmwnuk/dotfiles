@@ -1,0 +1,3 @@
+#!/bin/sh
+
+php ~/Projects/magento2/vendor/bin/rector "$@"

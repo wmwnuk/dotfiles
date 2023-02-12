@@ -1,0 +1,3 @@
+#!/bin/sh
+
+php ~/Projects/magento2/vendor/bin/phpcs --standard=Magento2 "$@"

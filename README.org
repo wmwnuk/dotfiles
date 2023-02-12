@@ -5,3 +5,5 @@ The dotfiles can be 'installed' using GNU stow:
 #+begin_src sh
 stow ~/Projects/dotfiles/ -t ~ module
 #+end_src
+
+'theme-files' shouldn't be stowed, there's 'install-theme-files.sh' script.

@@ -1,0 +1,7 @@
+# Rofi
+# Switch windows
+bindsym $mod+w exec "rofi -modi window -show window"
+# Run command
+bindsym $mod+d exec "rofi -modi run -show run"
+#Launch an application
+bindsym $mod+space exec "rofi -modi drun -show drun"

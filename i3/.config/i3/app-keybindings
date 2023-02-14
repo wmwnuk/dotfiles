@@ -1,0 +1,24 @@
+## Application keybindings
+# Start a terminal
+bindsym $mod+Return exec --no-startup-id kitty
+bindsym $mod+m exec --no-startup-id "kitty --class='Vim' -e '/usr/bin/nvim'"
+bindsym $mod+Control+m exec --no-startup-id "kitty --class='Vim' -e '/usr/bin/vim'"
+bindsym $mod+b exec --no-startup-id "flatpak run org.mozilla.firefox"
+bindsym $mod+Control+b exec --no-startup-id "flatpak run com.brave.Browser"
+bindsym $mod+i exec --no-startup-id "flatpak run io.gitlab.librewolf-community"
+bindsym $mod+Control+i exec --no-startup-id "flatpak run com.microsoft.Edge"
+bindsym $mod+n exec --no-startup-id "flatpak run org.ferdium.Ferdium"
+bindsym $mod+e exec --no-startup-id pcmanfm
+bindsym $mod+v exec --no-startup-id "flatpak run io.github.celluloid_player.Celluloid"
+bindsym $mod+a exec --no-startup-id "kitty --class 'pulsemixer' -e 'pulsemixer'"
+bindsym $mod+t exec --no-startup-id "kitty --class 'btop' -e 'btop'"
+bindsym $mod+c exec --no-startup-id "kitty --class 'ncmpcpp' -e 'ncmpcpp'"
+bindsym $mod+p exec --no-startup-id keepassxc
+bindsym $mod+Control+p exec --no-startup-id "flatpak run com.bitwarden.desktop"
+bindsym $mod+o exec --no-startup-id "flatpak run org.onlyoffice.desktopeditors"
+bindsym $mod+g exec --no-startup-id "kitty --class='Lazygit' -e '/usr/bin/lazygit'"
+bindsym Print exec --no-startup-id "flatpak run org.flameshot.Flameshot gui"
+bindsym $mod+Mod1+p exec --no-startup-id "flatpak run org.flameshot.Flameshot gui"
+bindsym Shift+Print exec --no-startup-id "flatpak run org.flameshot.Flameshot screen"
+bindsym $mod+Mod1+Control+p exec --no-startup-id "flatpak run org.flameshot.Flameshot screen"
+bindsym $mod+Shift+n exec --no-startup-id "dunstctl history-pop"

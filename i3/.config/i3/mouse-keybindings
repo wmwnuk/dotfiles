@@ -1,0 +1,16 @@
+# Layout
+# F3 | F6 | F9 
+#----+----+----
+# F2 | F5 | F8
+#----+----+----
+# F1 | F4 | F7
+
+# bindsym F1 keyd copy
+# bindsym F2 keyd paste
+bindsym F3 exec "rofi -modi drun -show drun"
+bindsym F4 exec --no-startup-id "flatpak run org.flameshot.Flameshot gui"
+# bindsym F5 leave it alone for refresh in browser
+# bindsym F6 keyd forward
+bindsym F7 exec --no-startup-id "flatpak run org.flameshot.Flameshot screen"
+bindsym F8 kill
+# bindsym F9 keyd back

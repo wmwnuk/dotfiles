@@ -2,6 +2,7 @@
 .idea
 *.log
 *.lock
+*.o
 tmp/
 
 .sync_*

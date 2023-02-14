@@ -3,7 +3,8 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
+static const char panel[][20]      = { "xfce4-panel", "Xfce4-panel" }; /* name & cls of panel win */
+static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "SauceCodePro Nerd Font Regular:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "SauceCodePro Nerd Font Regular:size=10";
@@ -29,7 +30,7 @@ static const Rule rules[] = {
 	/* class         instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",        NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",     NULL,       NULL,       1 << 8,       0,           -1 },
-    { "Xfce4-panel", NULL,       NULL,       ~0,           1,           -1 },
+ 	{ panel[1],   NULL,       NULL,       (1 << 9) - 1, 1,           -1 },
 };
 
 /* layout(s) */

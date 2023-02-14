@@ -19,3 +19,4 @@ ide/.config/VSCodium/Preferences
 themes/.local/share/icons/hicolor
 themes/.local/share/icons/distrobox
 peaclock/.peaclock/history
+bin/.local/bin/dwm

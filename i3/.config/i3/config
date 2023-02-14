@@ -5,10 +5,10 @@ set $mod Mod4
 font pango:SauceCodePro Nerd Font 10
 
 # Run XDG autostart
-exec --no-startup-id dex --autostart --environment i3
+# exec --no-startup-id dex --autostart --environment i3
 
 # Screen lock
-exec --no-startup-id xss-lock --transfer-sleep-lock -- lockscreen --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- lockscreen --nofork
 
 # Gaps config
 for_window [class="^.*"] border pixel 1 

@@ -35,7 +35,7 @@ bar {
 
 # Window color settings
 # class                 border        backgr.    text    indicator   child_border
-client.focused          $alt          $primary   $bg     $alt        $alt
+client.focused          $tertiary     $primary   $bg     $alt        $alt
 client.unfocused        $alt          $bg        $fg     $bg         $bg
 client.focused_inactive $alt          $primary   $alt    $bg         $bg       
 client.placeholder      $alt          $bg        $alt    $bg         $bg       

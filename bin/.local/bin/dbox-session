@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ -z $1 ]; then
+    echo "No session provided."
+    exit 1
+fi
+
 if ! tmux list-sessions | grep "$1"; then 
     tmux new-session -s "$1" -d distrobox-host-exec distrobox-enter "$1"
 fi

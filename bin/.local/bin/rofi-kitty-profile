@@ -3,14 +3,16 @@
 KITTY_PROFILE=$(printf " Root\n Archbox\n Tumbleweed" \
     | rofi -dmenu -p "" | cut -d " " -f2 | tr '[:upper:]' '[:lower:]')
 
-case $KITTY_PROFILE in
-    main|archbox)
-        kitty -e tmux new-session -A -s main
-        ;;
-    root)
-        kitty -e tmux new-session -A -s root distrobox-host-exec zsh
-        ;;
-    *)
-        kitty -e "$HOME"/.local/bin/dbox-session "$KITTY_PROFILE"
-        ;;
-esac
+if [ -n $KITTY_PROFILE ]; then
+    case $KITTY_PROFILE in
+        main|archbox)
+            kitty -e tmux new-session -A -s main
+            ;;
+        root)
+            kitty -e tmux new-session -A -s root distrobox-host-exec zsh
+            ;;
+        *)
+            kitty -e "$HOME"/.local/bin/dbox-session "$KITTY_PROFILE"
+            ;;
+    esac
+fi

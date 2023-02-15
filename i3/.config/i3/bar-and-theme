@@ -1,6 +1,5 @@
 # colors
-set $bgalt #1a1b26
-set $bg #24283b
+set $bg #1a1b26
 set $alt #414868
 set $fg #c0caf5
 set $alert #f7768e
@@ -36,10 +35,10 @@ bar {
 
 # Window color settings
 # class                 border        backgr.    text         indicator   child_border
-client.focused          $alt          $bgalt     $tertiary    $tertiary   $tertiary
+client.focused          $alt          $bg        $tertiary    $tertiary   $tertiary
 client.unfocused        $alt          $bg        $alt         $bg         $bg
-client.focused_inactive $alt          $bgalt     $fg          $bg         $bg       
-client.placeholder      $alt          $bg        $alt         $bg         $bg       
-client.urgent           $alt          $alert     $fg          $alert      $alert    
+client.focused_inactive $alt          $bg        $fg          $bg         $bg
+client.placeholder      $alt          $bg        $alt         $bg         $bg
+client.urgent           $alt          $alert     $fg          $alert      $alert
 
 client.background       $bg

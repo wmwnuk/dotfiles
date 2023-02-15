@@ -1,4 +1,5 @@
 # colors
+set $bgalt #1a1b26
 set $bg #24283b
 set $alt #414868
 set $fg #c0caf5
@@ -34,11 +35,11 @@ bar {
 }
 
 # Window color settings
-# class                 border        backgr.    text    indicator   child_border
-client.focused          $alt          $primary   $bg     $tertiary   $tertiary
-client.unfocused        $alt          $bg        $fg     $bg         $bg
-client.focused_inactive $alt          $primary   $alt    $bg         $bg       
-client.placeholder      $alt          $bg        $alt    $bg         $bg       
-client.urgent           $alt          $alert     $fg     $alert      $alert    
+# class                 border        backgr.    text         indicator   child_border
+client.focused          $alt          $bgalt     $tertiary    $tertiary   $tertiary
+client.unfocused        $alt          $bg        $alt         $bg         $bg
+client.focused_inactive $alt          $bgalt     $fg          $bg         $bg       
+client.placeholder      $alt          $bg        $alt         $bg         $bg       
+client.urgent           $alt          $alert     $fg          $alert      $alert    
 
 client.background       $bg

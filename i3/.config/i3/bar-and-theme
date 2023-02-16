@@ -39,6 +39,6 @@ client.focused          $alt          $bg        $tertiary    $tertiary   $terti
 client.unfocused        $alt          $bg        $alt         $bg         $bg
 client.focused_inactive $alt          $bg        $fg          $bg         $bg
 client.placeholder      $alt          $bg        $alt         $bg         $bg
-client.urgent           $alt          $alert     $fg          $alert      $alert
+client.urgent           $alt          $alert     $bg          $alert      $alert
 
 client.background       $bg

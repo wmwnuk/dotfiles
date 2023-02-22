@@ -115,9 +115,9 @@ typeset -A menu
 # Menu with keys/commands
 
 menu=(
-  [ Performance]="powerprofilesctl set performance"
-  [ Balanced]="powerprofilesctl set balanced"
-  [ Power Saver]="powerprofilesctl set power-saver"
+  [ Performance]="performance"
+  [ Balanced]="balanced"
+  [ Power Saver]="power-saver"
   [ Cancel]=""
 )
 
@@ -170,7 +170,7 @@ function ask_confirmation() {
   fi
 
   if [ "${confirmed}" == 0 ]; then
-    i3-msg -q "exec ${menu[${selection}]}"
+    /usr/bin/powerprofilesctl set "${menu[${selection}]}"
   fi
 }
 
@@ -179,6 +179,6 @@ if [[ $? -eq 0 && ! -z ${selection} ]]; then
         ${menu_confirm} =~ (^|[[:space:]])"${selection}"($|[[:space:]]) ]]; then
     ask_confirmation
   else
-    i3-msg -q "exec ${menu[${selection}]}"
+    /usr/bin/powerprofilesctl set "${menu[${selection}]}"
   fi
 fi

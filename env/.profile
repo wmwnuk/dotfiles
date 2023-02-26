@@ -32,4 +32,5 @@ export NNN_PLUG="p:$HOME/.config/nnn/plugins/preview-tui;f:$HOME/.config/nnn/plu
 
 [ -r /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-xhost +si:localuser:$USER > /dev/null
+# Don't need that in MicroOS
+# xhost +si:localuser:$USER > /dev/null

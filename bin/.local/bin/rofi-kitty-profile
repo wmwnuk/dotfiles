@@ -6,7 +6,7 @@ KITTY_PROFILE=$(printf " Root\n Archbox\n Tumbleweed" \
 if [ -n $KITTY_PROFILE ]; then
     case $KITTY_PROFILE in
         main|archbox)
-            kitty -e distrobox-enter archbox
+            kitty
             ;;
         root)
             kitty -e zsh

@@ -80,5 +80,8 @@ bindkey  "^[[F"   end-of-line
 bindkey  "^[[4~"  end-of-line
 bindkey  "^[[3~"  delete-char
 
-# To customize prompt, run `p10k configure` or edit ~/Projects/dotfiles/zsh/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+if [ $TERM = 'xterm-256color' ]; then
+    [[ ! -f ~/.config/zsh/.p10k.xterm.zsh ]] || source ~/.config/zsh/.p10k.xterm.zsh
+else  
+    [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+fi

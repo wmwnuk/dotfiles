@@ -28,7 +28,7 @@ export PAGER="less -R"
 # nnn config
 BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
 export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
-export NNN_PLUG="p:$HOME/.config/nnn/plugins/preview-kitty;f:$HOME/.config/nnn/plugins/fzopen"
+export NNN_PLUG="p:$HOME/.config/nnn/plugins/preview-tui;f:$HOME/.config/nnn/plugins/fzopen"
 
 [ -r /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 

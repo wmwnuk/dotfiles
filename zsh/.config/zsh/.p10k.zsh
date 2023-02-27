@@ -1484,7 +1484,7 @@
 
   ##############[ toolbox: toolbox name (https://github.com/containers/toolbox) ]###############
   # Toolbox color.
-  typeset -g POWERLEVEL9K_TOOLBOX_FOREGROUND=178
+  typeset -g POWERLEVEL9K_TOOLBOX_FOREGROUND=6
   # Don't display the name of the toolbox if it matches fedora-toolbox-*.
   typeset -g POWERLEVEL9K_TOOLBOX_CONTENT_EXPANSION='${P9K_TOOLBOX_NAME:#fedora-toolbox-*}'
   # Custom icon.

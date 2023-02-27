@@ -44,7 +44,10 @@ def _draw_icon(screen: Screen, index: int) -> int:
     screen.cursor.x = len(ICON)
     return screen.cursor.x
 
-def _draw_hostname(screen: Screen) -> int:
+def _draw_hostname(screen: Screen, index: int) -> int:
+    if index != 1:
+        return 0
+
     fg, bg = screen.cursor.fg, screen.cursor.bg
     hostname = socket.gethostname().split(".")[0]
     sep = " |"
@@ -54,7 +57,6 @@ def _draw_hostname(screen: Screen) -> int:
     screen.cursor.fg = sep_color
     screen.draw(sep)
     screen.cursor.fg, screen.cursor.bg = fg, bg
-
     return screen.cursor.x
 
 
@@ -136,7 +138,7 @@ def draw_tab(
 ) -> int:
 
     _draw_icon(screen, index)
-    _draw_hostname(screen)
+    _draw_hostname(screen, index)
     _draw_left_status(
         draw_data,
         screen,

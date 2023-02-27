@@ -5,9 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# When entering from tmux, somehow host /etc/profile is sourced after .zshenv / .profile
-# So, let's source it again if we're inside container
-[[ -f /run/.containerenv ]] && source $HOME/.zshenv
+# It seems zshenv doesn't get sourced at all here on SUSE, so let's source it to have our $PATH
+source $HOME/.zshenv
 
 export ZDOTDIR=$HOME/.config/zsh
 HISTFILE=~/.zsh_history

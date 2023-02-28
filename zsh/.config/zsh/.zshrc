@@ -64,7 +64,7 @@ compinit
 autoload edit-command-line; zle -N edit-command-line
 
 # Speedy keys
-xset r rate 210 40
+xset r rate 210 40 2>/dev/null
 
 source "$HOME/.aliases"
 
@@ -80,8 +80,11 @@ bindkey  "^[[F"   end-of-line
 bindkey  "^[[4~"  end-of-line
 bindkey  "^[[3~"  delete-char
 
-if [ $TERM = 'xterm-256color' ]; then
-    [[ ! -f ~/.config/zsh/.p10k.xterm.zsh ]] || source ~/.config/zsh/.p10k.xterm.zsh
-else  
-    [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-fi
+case $TERM in
+    xterm-256color|xterm|linux)
+        [[ ! -f ~/.config/zsh/.p10k.xterm.zsh ]] || source ~/.config/zsh/.p10k.xterm.zsh
+        ;;
+    *)
+        [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+        ;;
+esac

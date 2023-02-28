@@ -13,8 +13,8 @@ set $tertiary #7aa2f7
 # i3bar
 bar {
     position top
-    mode invisible
-    tray_output none
+    mode dock
+    tray_output primary
     tray_padding 4
     font pango:SauceCodePro Nerd Font 9.5
     separator_symbol " "
@@ -23,7 +23,7 @@ bar {
     colors {
       background $bg
       statusline $fg
-      separator $secondary
+      separator  $secondary
 
       focused_workspace  $bg $bg $fg
       active_workspace   $bg $bg $secondary

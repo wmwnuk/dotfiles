@@ -13,4 +13,4 @@ sep=${sep:=''}
 icon=${icon:=''}
 icon_color=${icon_color:='#81A1C1'}
 
-echo "<span background='$background'><span foreground='$sep_fg' background='$sep_bg' size='x-large'>$sep</span> <span foreground='$icon_color'>$icon </span> <span rise='1'>$(df -h | grep "$mount_point$" | awk '{print $5}')</span> </span>"
+echo "<span background='$background'><span foreground='$sep_fg' background='$sep_bg' size='x-large'>$sep</span> <span foreground='$icon_color'>$icon </span> <span rise='1pt'>$(df -h | grep "$mount_point$" | awk '{print $5}')</span> </span>"

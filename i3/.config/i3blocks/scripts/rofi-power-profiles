@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $button ]; then power-profiles; fi
+if [ $button ]; then rofi-power-profiles; fi
 
 foreground=${foreground:='#7aa2f7'}
 icon_color=${icon_color:='#b4f9f8'}
@@ -28,5 +28,5 @@ case $power_profile in
         ;;
 esac
 
-echo "<span foreground='$foreground' background='$bar_color' size='x-large'>$sep</span><span background='$background'><span foreground='$icon_color' size='large' rise='1'> $icon </span></span>"
+echo "<span foreground='$foreground' background='$bar_color' size='x-large'>$sep</span><span background='$background'><span foreground='$icon_color' size='large' rise='1'> $icon  </span></span>"
 

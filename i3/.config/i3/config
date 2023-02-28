@@ -198,7 +198,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# include audio-buttons
+include audio-buttons
 # include launcher
 include assignments
 include bar-and-theme

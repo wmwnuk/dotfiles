@@ -4,7 +4,8 @@ if [ $button ]; then rofi -show menu -modi 'menu:rofi-power-menu' >/dev/null; fi
 
 color=${color:='#81A1C1'}
 background=${background:='#5e81ac'}
+sep_color=${sep_color:='#5e81ac'}
 bar_color=${bar_color:='#2e3440'}
 sep=${sep:=''}
 
-echo "<span foreground='$background' background='$bar_color' size='x-large'>$sep</span> <span foreground='$color' rise='1'></span> "
+echo "<span foreground='$sep_color' background='$bar_color' size='x-large'>$sep</span> <span foreground='$color' rise='1pt'></span> "

@@ -10,8 +10,8 @@ icon_color=#d5d6db
 mount_point=/home
 color=#c0caf5
 background=#414868
-bar_color=#7aa2f7
-sep_fg=#7aa2f7
+bar_color=#1a1b26
+sep_fg=#1a1b26
 sep_bg=#414868
 sep=
 interval=30
@@ -20,7 +20,7 @@ interval=30
 markup=pango
 bar_color=#414868
 icon_color=#d5d6db
-background=#24283b
+background=#1a1b26
 color=#c0caf5
 sep=
 interval=1
@@ -29,7 +29,7 @@ interval=1
 icon_color=#d5d6db
 muted_color=#f7768e
 background=#414868
-bar_color=#24283b
+bar_color=#1a1b26
 sep=
 markup=pango
 interval=1
@@ -99,10 +99,22 @@ color=#24283b
 sep=
 interval=1
 
-[rofi-power-menu]
+[rofi-power-profiles]
+perf_color=#e0af68
+save_color=#9ece6a
+icon_color=#73daca
+background=#1a1b26
 bar_color=#7aa2f7
-background=#24283b
-color=#d5d6db
+foreground=#1a1b26
 sep=
+markup=pango
+interval=1
+
+[rofi-power-menu]
+bar_color=#1a1b26
+background=#1a1b26
+sep_color=#7aa2f7
+color=#d5d6db
+sep=
 markup=pango
 interval=1

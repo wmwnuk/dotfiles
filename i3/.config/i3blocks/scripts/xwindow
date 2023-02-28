@@ -109,11 +109,11 @@ icon_color=${icon_color:='#81A1C1'}
 spaces=$(perl -E "say ' ' x $length")
 windowname=$(echo $windowname | sed "s_&_&amp;_g; s_<_\&lt;_g; s_>_\&gt;_g;")
 
-echo "<span foreground='$bar_color' background='$background' size='x-large'>$sep</span><span background='$background'> <span rise='1' foreground='$icon_color'>$icon </span> <span rise='2'>$windowname$spaces</span> </span>"
+echo "<span foreground='$bar_color' background='$background' size='x-large'>$sep</span><span background='$background'> <span rise='1pt' foreground='$icon_color'>$icon </span> <span rise='2pt'>$windowname$spaces</span> </span>"
 
 windowname=$(xdotool getwindowfocus getwindowname | sed 's/\(.\{45\}\).*/\1.../')
 length=$(expr 48 - "$(echo "$windowname"|awk '{print length}')")
 spaces=$(perl -E "say ' ' x $length")
 windowname=$(echo $windowname | sed "s_&_&amp;_g; s_<_\&lt;_g; s_>_\&gt;_g;")
 
-echo "<span foreground='$bar_color' background='$background' size='x-large'>$sep</span><span background='$background'> <span rise='1' foreground='$icon_color'>$icon </span> <span rise='2'>$windowname$spaces</span> </span>"
+echo "<span foreground='$bar_color' background='$background' size='x-large'>$sep</span><span background='$background'> <span rise='1pt' foreground='$icon_color'>$icon </span> <span rise='2pt'>$windowname$spaces</span> </span>"

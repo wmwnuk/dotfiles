@@ -45,6 +45,9 @@ else:
     else:
         percentleft = 0
 
+    if percentleft == 99:
+        percentleft = 100
+
     def icon(percent):
         form = "<span foreground='{}'>{}</span>"
         icon = False
@@ -81,7 +84,7 @@ else:
     bar_color = config.get('bar_color', '')
     background = config.get('background', '')
     sep = config.get('sep', '')
-    form = "<span background='{}'><span background='{}' foreground='{}' size='x-large' rise='-1'>{}</span> {} <span>{}%</span> </span>"
+    form = "<span background='{}'><span background='{}' foreground='{}' size='x-large' rise='-1pt'>{}</span> {} <span>{}%</span> </span>"
     fulltext = form.format(background, bar_color, background, sep, icon(percentleft), percentleft)
 
 print(fulltext)

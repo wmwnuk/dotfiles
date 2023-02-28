@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $button ]; then i3-msg exec "kitty --class 'btop' -e 'btop'" > /dev/null; fi
+
+icon_color=${icon_color:='#d5d6db'}
+icon=${icon:='﬙'}
+foreground=${foreground:='#3b4252'}
+background=${background:='#8fbcbb'}
+bar_color=${bar_color:='#2e3440'}
+sep=${sep:=''}
+sep_fg=${sep_fg:='#3b4252'}
+sep_bg=${sep_bg:='#8fbcbb'}
+cpu_usage=$(printf '%0.f' $(mpstat 1 1 | awk 'END{print 100-$NF}'))
+length=$(expr 3 - $(echo $cpu_usage|awk '{print length}'))
+spaces=$(perl -E "say ' ' x $length")
+
+echo "<span background='$sep_bg' foreground='$sep_fg' size='x-large'>$sep</span><span background='$background'> <span foreground='$icon_color' size='large'>$icon </span> <span rise='1'>$cpu_usage%$spaces</span> </span>"
+

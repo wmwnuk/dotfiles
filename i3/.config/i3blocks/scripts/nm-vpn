@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+nmcli c show --active | grep vpn >/dev/null
+vpnon=$?
+
+bar_color=${bar_color:='#2e3440'}
+background=${background:='#81a1c1'}
+alert=${alert:='#bf616a'}
+sep=${sep:=''}
+
+if  [ $vpnon -eq 0 ]
+then
+    icon=''
+    color="$bar_color"
+else
+    icon=''
+    color="$alert"
+fi
+
+echo "<span foreground='$background' background='$bar_color' size='x-large'>$sep</span><span background='$background'> <span foreground='$color' size='large' rise='1'>$icon</span> </span><span background='$background' foreground='$bar_color' size='x-large'>$sep</span>"

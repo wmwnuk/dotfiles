@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ $button ]; then i3-msg exec "kitty --class 'khal' -e ikhal" > /dev/null; fi
+
+icon_color=${icon_color:='#81A1C1'}
+background=${background:='#5e81ac'}
+bar_color=${bar_color:='#2e3440'}
+sep=${sep:=''}
+foreground=${foreground:='#3b4252'}
+
+echo "<span foreground='$foreground' background='$bar_color' size='x-large' rise='-1'>$sep</span><span background='$background'> <span foreground='$icon_color'> </span> <span>$(date +"%Y-%m-%d")</span> </span>"

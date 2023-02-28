@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ $button ];
+then
+    i3-msg exec "kitty --class 'peaclock' -e tty-clock -sB" > /dev/null
+fi
+
+background=${background:='#5e81ac'}
+bar_color=${bar_color:='#2e3440'}
+sep=${sep:=''}
+icon_color=${icon_color:='#81A1C1'}
+
+echo "<span foreground='$background' background='$bar_color' size='x-large'>$sep</span><span background='$background'> <span foreground='$icon_color' size='large'> </span> <span rise='1'>$(date +"%H:%M:%S")</span> </span>"

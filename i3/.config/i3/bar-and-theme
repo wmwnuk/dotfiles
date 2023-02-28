@@ -19,7 +19,7 @@ bar {
     font pango:SauceCodePro Nerd Font 9.5
     separator_symbol " "
     strip_workspace_numbers yes
-    # status_command i3blocks -c ~/.config/i3blocks/config-tnd
+    status_command i3blocks -c ~/.config/i3blocks/config
     colors {
       background $bg
       statusline $fg

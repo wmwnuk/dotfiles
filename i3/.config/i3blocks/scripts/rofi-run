@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ $button ]; then rofi -modi run -show run >/dev/null; fi
+
+bar_color=${bar_color:='#2e3440'}
+background=${background:='#88c0d0'}
+sep=${sep:=''}
+icon=${icon:=''}
+icon_color=${icon_color:='#81A1C1'}
+
+echo "<span foreground='$bar_color' background='$background' size='x-large'>$sep</span><span background='$background'><span foreground='$icon_color' size='large' rise='1'> $icon </span> </span>"

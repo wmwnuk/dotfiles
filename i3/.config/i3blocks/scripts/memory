@@ -1,0 +1,86 @@
+#!/usr/bin/env sh
+# Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+if [ $button ]; then i3-msg exec "kitty --class 'btop' -e 'btop'" > /dev/null; fi
+
+TYPE="${BLOCK_INSTANCE:-mem}"
+PERCENT="${PERCENT:-true}"
+bar_color=${bar_color:='#2e3440'}
+background=${background:='#88c0d0'}
+foreground=${foreground:='#88c0d0'}
+crit=${crit:='#BF616A'}
+warn=${warn:='#d08770'}
+noti=${noti='#ebcb8b'}
+sep=${sep:=''}
+icon=${icon:=''}
+icon_color=${icon_color:='#81A1C1'}
+
+pct="$(awk -v type="$TYPE" -v percent="$PERCENT" '
+/^MemTotal:/ {
+	mem_total=$2
+}
+/^MemFree:/ {
+	mem_free=$2
+}
+/^Buffers:/ {
+	mem_free+=$2
+}
+/^Cached:/ {
+	mem_free+=$2
+}
+/^SwapTotal:/ {
+	swap_total=$2
+}
+/^SwapFree:/ {
+	swap_free=$2
+}
+END {
+	if (type == "swap") {
+		free=swap_free/1024/1024
+		used=(swap_total-swap_free)/1024/1024
+		total=swap_total/1024/1024
+	} else {
+		free=mem_free/1024/1024
+		used=(mem_total-mem_free)/1024/1024
+		total=mem_total/1024/1024
+	}
+	pct=0
+	if (total > 0) {
+		pct=used/total*100
+	}
+	# full text
+	printf("%s", pct)
+}
+' /proc/meminfo)"
+
+length=$(expr 3 - "$(printf '%.f' "$pct"|awk '{print length}')")
+spaces=$(perl -E "say ' ' x $length")
+
+printf "<span rise=\"1pt\" foreground=\"%s\" background=\"%s\" size=\"x-large\">%s</span><span background=\"%s\"> \
+<span foreground=\"%s\" rise=\"1pt\" size=\"large\">%s </span> </span><span background=\"%s\"><span rise=\"2pt\">\
+%.f%%%s</span>  </span>\n" $foreground $bar_color $sep $background $icon_color $icon $background "$pct" \
+"$spaces" $background
+
+pct=$(printf %0.f $pct)
+
+if [ $pct -gt 90 ]; then
+    print "%s" $crit
+elif [ $pct -gt 80 ]; then
+    print "%s" $warn
+elif [ $pct -gt 70 ]; then
+    print "%s" $noti
+fi
+

@@ -1,0 +1,119 @@
+#!/bin/sh
+
+if [ $button ]; then rofi -modi window -show window; fi
+
+background=${background:='#5e81ac'}
+bar_color=${bar_color:='#2e3440'}
+sep=${sep:=''}
+windowname=$(xdotool getwindowfocus getwindowname | sed 's/\(.\{85\}\).*/\1.../')
+length=$(expr 88 - "$(echo "$windowname"|awk '{print length}')")
+case $(xdotool getwindowfocus getwindowclassname) in
+    kitty|Alacritty|tilix)
+        icon=
+        ;;
+    Vim)
+        icon=
+        ;;
+    Subl|vscodium)
+        icon=
+        ;;
+    librewolf|LibreWolf|firefox)
+        icon=
+        ;;
+    Brave-browser|Microsoft-edge)
+        icon=
+        ;;
+    Mailspring|Geary)
+        icon=
+        ;;
+    Blender|kdenlive)
+        icon=
+        ;;
+    Gimp-2.10|Inkscape)
+        icon=
+        ;;
+    Ferdium|discord|Slack)
+        icon=
+        ;;
+    Spicy)
+        icon=
+        ;;
+    Quickgui|Virt-manager)
+        icon=
+        ;;
+    KeePassXC)
+        icon=
+        ;;
+    ownCloud|rclone-browser)
+        icon=
+        ;;
+    Thunar|Pcmanfm)
+        icon=
+        ;;
+    io.github.celluloid_player.Celluloid|mpv)
+        icon=喇
+        ;;
+    spotify)
+        icon=
+        ;;
+    obs|droidcam|Audacity)
+        icon=壘
+        ;;
+    libreoffice|DesktopEditors)
+        icon=
+        ;;
+    timeshift-gtk)
+        icon=
+        ;;
+    File-roller)
+        icon=
+        ;;
+    Steam)
+        icon=
+        ;;
+    heroic|Lutris|retroarch)
+        icon=
+        ;;
+    Com.github.tchx84.Flatseal|lxappearance|arandr)
+        icon=
+        ;;
+    ncmpcpp)
+        icon=
+        ;;
+    stacer|btop)
+        icon=
+        ;;
+    peaclock)
+        icon=
+        ;;
+    Orage)
+        icon=
+        ;;
+    Xfce4-power-manager-settings)
+        icon=
+        ;;
+    Nm-applet)
+        icon=
+        ;;
+    pulsemixer)
+        icon=墳
+        ;;
+    '')
+        icon=
+        ;;
+    *)
+        icon=
+        ;;
+esac
+icon_color=${icon_color:='#81A1C1'}
+spaces=$(perl -E "say ' ' x $length")
+windowname=$(echo $windowname | sed "s_&_&amp;_g; s_<_\&lt;_g; s_>_\&gt;_g;")
+
+echo "<span foreground='$bar_color' background='$background' size='x-large'>$sep</span><span background='$background'> <span rise='1' foreground='$icon_color'>$icon </span> <span rise='2'>$windowname$spaces</span> </span>"
+
+windowname=$(xdotool getwindowfocus getwindowname | sed 's/\(.\{45\}\).*/\1.../')
+length=$(expr 48 - "$(echo "$windowname"|awk '{print length}')")
+spaces=$(perl -E "say ' ' x $length")
+windowname=$(echo $windowname | sed "s_&_&amp;_g; s_<_\&lt;_g; s_>_\&gt;_g;")
+
+echo "<span foreground='$bar_color' background='$background' size='x-large'>$sep</span><span background='$background'> <span rise='1' foreground='$icon_color'>$icon </span> <span rise='2'>$windowname$spaces</span> </span>"

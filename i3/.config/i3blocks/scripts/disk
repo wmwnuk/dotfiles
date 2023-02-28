@@ -1,0 +1,16 @@
+#!/bin/sh
+
+mount_point=${mount_point:='/'}
+
+if [ $button ]; then i3-msg exec pcmanfm / > /dev/null; fi
+
+foreground=${foreground:='#3b4252'}
+background=${background:='#8fbcbb'}
+sep_fg=${sep_fg:='#3b4252'}
+sep_bg=${sep_bg:='#8fbcbb'}
+bar_color=${bar_color:='#2e3440'}
+sep=${sep:=''}
+icon=${icon:=''}
+icon_color=${icon_color:='#81A1C1'}
+
+echo "<span background='$background'><span foreground='$sep_fg' background='$sep_bg' size='x-large'>$sep</span> <span foreground='$icon_color'>$icon </span> <span rise='1'>$(df -h | grep "$mount_point$" | awk '{print $5}')</span> </span>"

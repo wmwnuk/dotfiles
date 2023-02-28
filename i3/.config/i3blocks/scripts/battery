@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+#
+# Copyright (C) 2016 James Murphy
+# Licensed under the GPL version 2 only
+#
+# A battery indicator blocklet script for i3blocks
+
+from subprocess import check_output
+import os
+import re
+
+config = dict(os.environ)
+
+# if config.get("button", False):
+#     os.system("i3-msg exec xfce4-power-manager-settings > /dev/null")
+
+status = check_output(['acpi'], universal_newlines=True)
+
+if not status:
+    # stands for no battery found
+    color = config.get("color_10", "red")
+    fulltext = "<span color='{}' size='large'>\uf1e6\uf578</span>".format(color)
+    percentleft = 100
+else:
+    # if there is more than one battery in one laptop, the percentage left is
+    # available for each battery separately, although state and remaining
+    # time for overall block is shown in the status of the first battery
+    batteries = status.split("\n")
+    state_batteries=[]
+    commasplitstatus_batteries=[]
+    percentleft_batteries=[]
+    time = ""
+    for battery in batteries:
+        if battery!='':
+            state_batteries.append(battery.split(": ")[1].split(", ")[0])
+            commasplitstatus = battery.split(", ")
+            p = int(commasplitstatus[1].rstrip("%\n"))
+            if p>0:
+                percentleft_batteries.append(p)
+            commasplitstatus_batteries.append(commasplitstatus)
+    state = state_batteries[0]
+    commasplitstatus = commasplitstatus_batteries[0]
+    if percentleft_batteries:
+        percentleft = int(sum(percentleft_batteries)/len(percentleft_batteries))
+    else:
+        percentleft = 0
+
+    def icon(percent):
+        form = "<span foreground='{}'>{}</span>"
+        icon = False
+
+        if state == "Charging":
+            icon=""
+        
+        if state == "Unknown":
+            return form.format(config.get("color_10", "#FF0000"), "")
+        else:
+            if percent < 10:
+                return form.format(config.get("color_10", "#FF0000"), icon if icon else "")
+            if percent < 20:
+                return form.format(config.get("color_20", "#FF3300"), icon if icon else "")
+            if percent < 30:
+                return form.format(config.get("color_30", "#FF6600"), icon if icon else "")
+            if percent < 40:
+                return form.format(config.get("color_40", "#FF9900"), icon if icon else "")
+            if percent < 50:
+                return form.format(config.get("color_50", "#FFCC00"), icon if icon else "")
+            if percent < 60:
+                return form.format(config.get("color_60", "#FFFF00"), icon if icon else "")
+            if percent < 70:
+                return form.format(config.get("color_70", "#FFFF33"), icon if icon else "")
+            if percent < 80:
+                return form.format(config.get("color_80", "#FFFF66"), icon if icon else "")
+            if percent < 90:
+                return form.format(config.get("color_80", "#FFFF66"), icon if icon else "")
+            if percent < 100:
+                return form.format(config.get("color_80", "#FFFF66"), icon if icon else "")
+            else:
+                return form.format(config.get("color_full", "#FFFFFF"), icon if icon else "")
+
+    bar_color = config.get('bar_color', '')
+    background = config.get('background', '')
+    sep = config.get('sep', '')
+    form = "<span background='{}'><span background='{}' foreground='{}' size='x-large' rise='-1'>{}</span> {} <span>{}%</span> </span>"
+    fulltext = form.format(background, bar_color, background, sep, icon(percentleft), percentleft)
+
+print(fulltext)
+print(fulltext)
+

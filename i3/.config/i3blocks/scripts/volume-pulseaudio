@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ $button ]; then i3-msg exec "kitty --class 'pulsemixer' -e 'pulsemixer'" > /dev/null; fi
+
+bar_color=${bar_color:='#2e3440'}
+background=${background:='#88c0d0'}
+sep=${sep:=''}
+icon_color=${icon_color:='#81A1C1'}
+muted_color=${muted_color:='#bf616a'}
+
+echo "<span background='$bar_color' foreground='$background' size='x-large' rise='-1'>$sep</span><span background='$background'> $(pulsemixer --get-mute | grep 0 > /dev/null && echo "<span foreground='$icon_color'> </span> <span>$(pulsemixer --get-volume | awk '{print $1}')%</span>" || echo "<span foreground='$muted_color'>婢</span>") </span>"

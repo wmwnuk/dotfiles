@@ -1,0 +1,32 @@
+#!/bin/sh
+
+if [ $button ]; then power-profiles; fi
+
+foreground=${foreground:='#7aa2f7'}
+icon_color=${icon_color:='#b4f9f8'}
+perf_color=${perf_color:='#e0af68'}
+save_color=${save_color:='#9ece6a'}
+
+icon=
+power_profile=$(powerprofilesctl get)
+
+bar_color=${bar_color:='#2e3440'}
+background=${background:='#81a1c1'}
+sep=${sep:=''}
+
+case $power_profile in
+    'performance')
+        icon=
+        icon_color=$perf_color
+        ;;
+    'balanced')
+        icon=
+        ;;
+    'power-saver')
+        icon=
+        icon_color=$save_color
+        ;;
+esac
+
+echo "<span foreground='$foreground' background='$bar_color' size='x-large'>$sep</span><span background='$background'><span foreground='$icon_color' size='large' rise='1'> $icon </span></span>"
+

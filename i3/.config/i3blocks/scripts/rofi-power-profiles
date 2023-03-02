@@ -6,6 +6,8 @@ foreground=${foreground:='#7aa2f7'}
 icon_color=${icon_color:='#b4f9f8'}
 perf_color=${perf_color:='#e0af68'}
 save_color=${save_color:='#9ece6a'}
+sep_fg=${sep_fg:='#3b4252'}
+sep_bg=${sep_bg:='#8fbcbb'}
 
 icon=
 power_profile=$(powerprofilesctl get)
@@ -28,5 +30,5 @@ case $power_profile in
         ;;
 esac
 
-echo "<span foreground='$foreground' background='$bar_color' size='x-large'>$sep</span><span background='$background'><span foreground='$icon_color' size='large' rise='1'> $icon  </span></span>"
+echo "<span foreground='$sep_fg' background='$sep_bg'>$sep</span><span background='$background'><span foreground='$icon_color' rise='1'> $icon  </span></span>"
 

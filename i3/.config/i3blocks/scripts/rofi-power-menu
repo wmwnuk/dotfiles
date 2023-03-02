@@ -8,4 +8,4 @@ sep_color=${sep_color:='#5e81ac'}
 bar_color=${bar_color:='#2e3440'}
 sep=${sep:=''}
 
-echo "<span foreground='$sep_color' background='$bar_color' size='x-large'>$sep</span> <span foreground='$color' rise='1pt'></span> "
+echo "<span foreground='$sep_color' background='$bar_color'>$sep</span> <span foreground='$color'></span> "

@@ -8,4 +8,4 @@ bar_color=${bar_color:='#2e3440'}
 sep=${sep:=''}
 foreground=${foreground:='#3b4252'}
 
-echo "<span foreground='$foreground' background='$bar_color' size='x-large' rise='-1pt'>$sep</span><span background='$background'> <span foreground='$icon_color'> </span> <span>$(date +"%Y-%m-%d")</span> </span>"
+echo "<span foreground='$foreground' background='$bar_color'>$sep</span><span background='$background'> <span foreground='$icon_color'> </span> <span>$(date +"%Y-%m-%d")</span> </span>"

@@ -8,6 +8,8 @@ fi
 background=${background:='#5e81ac'}
 bar_color=${bar_color:='#2e3440'}
 sep=${sep:=''}
+sep_fg=${sep_fg:='#3b4252'}
+sep_bg=${sep_bg:='#8fbcbb'}
 icon_color=${icon_color:='#81A1C1'}
 
-echo "<span foreground='$background' background='$bar_color' size='x-large'>$sep</span><span background='$background'> <span foreground='$icon_color' size='large'> </span> <span rise='1pt'>$(date +"%H:%M:%S")</span> </span>"
+echo "<span foreground='$sep_fg' background='$sep_bg'>$sep</span><span background='$background'> <span foreground='$icon_color'> </span> <span>$(date +"%H:%M:%S")</span> </span>"

@@ -17,4 +17,4 @@ else
     color="$alert"
 fi
 
-echo "<span foreground='$background' background='$bar_color' size='x-large'>$sep</span><span background='$background'> <span foreground='$color' size='large' rise='1'>$icon</span> </span><span background='$background' foreground='$bar_color' size='x-large'>$sep</span>"
+echo "<span foreground='$background' background='$bar_color'>$sep</span><span background='$background'> <span foreground='$color' rise='1'>$icon</span> </span><span background='$background' foreground='$bar_color'>$sep</span>"

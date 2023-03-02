@@ -2,7 +2,7 @@
 
 if [ $button ];
 then
-    i3-msg exec "kitty --class 'peaclock' -e tty-clock -sB" > /dev/null
+    i3-msg exec "kitty --class 'peaclock' -e 'peaclock'" > /dev/null
 fi
 
 background=${background:='#5e81ac'}

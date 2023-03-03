@@ -14,6 +14,9 @@ case $(xdotool getwindowfocus getwindowclassname) in
     Vim)
         icon=
         ;;
+    Emacs)
+        icon=
+        ;;
     Subl|vscodium)
         icon=
         ;;

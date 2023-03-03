@@ -6,5 +6,6 @@ exec --no-startup-id "~/.fehbg"
 exec --no-startup-id "flatpak run org.flameshot.Flameshot"
 exec --no-startup-id "picom"
 exec_always --no-startup-id autotiling
+exec --no-startup-id "emacs --daemon"
 # exec_always --no-startup-id "sleep 2 && polybar-launch"
 # exec_always "xfce4-panel -d"

@@ -67,7 +67,7 @@
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 
 (require 'company)
-(add-hook 'lsp-mode-hook 'company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 
 (require 'company-box)
 (add-hook 'company-mode-hook 'company-box-mode)
@@ -151,6 +151,16 @@
       read-buffer-completion-ignore-case t
       completion-ignore-case t)
 
+(defun my/start-vterm ()
+      (interactive)
+      (vterm "/bin/zsh")
+      (get-buffer-process (rename-buffer (generate-new-buffer-name "*vterm*"))))
+
+(defun my/start-eshell ()
+      (interactive)
+      (eshell)
+      (get-buffer-process (rename-buffer (generate-new-buffer-name "*eshell*"))))
+
 ;; Keybindings
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
@@ -164,10 +174,12 @@
     "wc" 'delete-window
     "bk" 'kill-current-buffer
     "gg" 'magit
-    "tt" 'vterm
+    "te" 'my/start-eshell
+    "tt" 'my/start-vterm
     "pl" 'package-list-packages
     "rn" 'lsp-rename
     "D"  'lsp-find-type-definition
+    "fP" (lambda () (interactive) (find-file "~/Projects/dotfiles/emacs/.emacs.d/config.el"))
   )
 (define-key evil-normal-state-map (kbd "gcc") 'evilnc-comment-or-uncomment-lines)
 (define-key evil-visual-state-map (kbd "gc") 'evilnc-comment-or-uncomment-lines)

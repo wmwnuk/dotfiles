@@ -1,0 +1,5 @@
+#!/bin/sh
+
+kill -TERM $(pidof emacs) 2>/dev/null
+sleep 1
+emacs --daemon

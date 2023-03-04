@@ -2,7 +2,7 @@
 
 mount_point=${mount_point:='/'}
 
-if [ $button ]; then i3-msg exec "kitty -e nnn $HOME" > /dev/null; fi
+if [ $button ]; then i3-msg exec "kitty -e nnn -a -Pp $HOME" > /dev/null; fi
 
 foreground=${foreground:='#3b4252'}
 background=${background:='#8fbcbb'}

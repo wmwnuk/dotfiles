@@ -14,5 +14,5 @@ cpu_usage=$(printf '%0.f' $(python3 <<< "import psutil;print(psutil.cpu_percent(
 length=$(expr 3 - $(echo $cpu_usage|awk '{print length}'))
 spaces=$(perl -E "say ' ' x $length")
 
-echo "<span background='$sep_bg' foreground='$sep_fg'>$sep</span><span background='$background'> <span foreground='$icon_color'>$icon </span> <span>$cpu_usage%$spaces</span> </span>"
+echo "<span background='$sep_bg' foreground='$sep_fg'>$sep</span><span background='$background'> <span foreground='$icon_color'>$icon </span> <span>$cpu_usage%$spaces</span></span>"
 

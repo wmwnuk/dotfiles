@@ -73,7 +73,7 @@ spaces=$(perl -E "say ' ' x $length")
 
 printf "<span foreground=\"%s\" background=\"%s\">%s</span><span background=\"%s\"> \
 <span foreground=\"%s\">%s </span> </span><span background=\"%s\"><span>\
-%.f%%%s</span>  </span>\n" $sep_fg $sep_bg $sep $background $icon_color $icon $background "$pct" \
+%.f%%%s</span></span>\n" $sep_fg $sep_bg $sep $background $icon_color $icon $background "$pct" \
 "$spaces" $background
 
 pct=$(printf %0.f $pct)

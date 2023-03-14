@@ -1,0 +1,64 @@
+snippet h "XML header" b
+<?xml version="1.0"?>
+<!--
+/**
+ * Created by Q-Solutions Studio
+ *
+ * @category    ${1:Vendor}
+ * @package     $1_${2:Module}
+ * @author      Wojciech M. Wnuk <wojtek@qsolutionsstudio.com>
+ */
+-->
+endsnippet
+
+snippet m "Magento 2 module.xml" b
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="${1:Vendor}_${2:Module}"/>
+</config>
+endsnippet
+
+snippet d "Magento 2 di.xml" b
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- config here -->
+</config>
+endsnippet
+
+snippet e "Magento 2 events.xml" b
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="${1:event}">
+        <observer name="${2:Vendor}_${3:Module}::$1" instance="$2\\$3\\Observer\\${4:ClassName}" />
+    </event>
+</config>
+endsnippet
+
+snippet r "Magento 2 frontend router" b
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="${1:route_name}" frontName="$1">
+            <module name="${2:Vendor}_${2:Module}"/>
+        </route>
+    </router>
+</config>
+endsnippet
+
+snippet ra "Magento 2 admin router" b
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="${1:route_name}" frontName="$1">
+            <module name="${2:Vendor}_${2:Module}"/>
+        </route>
+    </router>
+</config>
+endsnippet
+
+snippet la "Magento 2 layout" b
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        
+    </body>
+</page>
+endsnippet

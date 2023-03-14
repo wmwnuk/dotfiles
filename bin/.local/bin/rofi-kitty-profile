@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-KITTY_PROFILE=$(printf " Root\n Archbox\n Tumbleweed" \
+KITTY_PROFILE=$(printf " Root\n Archbox\n Emacs\n Tumbleweed" \
     | rofi -dmenu -p "" | cut -d " " -f2 | tr '[:upper:]' '[:lower:]')
 
 if [ -n $KITTY_PROFILE ]; then

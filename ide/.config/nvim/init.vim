@@ -35,6 +35,8 @@ if has('nvim')
     call sigma#lsp_add('marksman')
     call sigma#lsp_add('lemminx')
     call sigma#lsp_add('elixirls')
+    call sigma#lsp_add('vls')
+    call sigma#lsp_add('rust_analyzer')
 endif
 
 call sigma#init()
@@ -88,12 +90,7 @@ if has('nvim')
                 \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
                 \ {'c': ['  Configure         SPC f P', 'SigmaConfig']},
                 \ ]
-    " dev icons for startify
-    :lua function _G.webDevIcons(path) local filename = vim.fn.fnamemodify(path, ':t') local extension = vim.fn.fnamemodify(path, ':e') return require'nvim-web-devicons'.get_icon(filename, extension, { default = true }) end
 
-    function! StartifyEntryFormat() abort
-        return 'v:lua.webDevIcons(absolute_path) . " " . entry_path'
-    endfunction
     " org-bullets.nvim
     :lua require('org-bullets').setup()
     " icon-picker.nvim
@@ -119,6 +116,7 @@ endif
 
 " Autocmd
 autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline | endif
+autocmd BufNewFile,BufRead *.v set filetype=vlang
 
 " Magento 2 linters
 nnoremap <silent><leader>md <Cmd>!phpmdm2 %<CR>

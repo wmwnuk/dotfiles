@@ -18,5 +18,5 @@ alias cd=zix
 alias ssh="TERM=xterm-256color ssh"
 alias nnn="nnn -a -H -Pp" n=nnn
 alias f="nnn -a -H -Pf"
-alias vim=nvim vi=vim v=vi
+alias vim=nvim vi=vim
 alias magento-cloud='TERM=xterm-256color magento-cloud'

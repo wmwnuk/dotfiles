@@ -1,0 +1,3 @@
+#!/bin/bash
+
+( cd ~/QSS/Projects/q-deploy && mina deploy_production "$@" )

@@ -89,7 +89,7 @@ sep_bg=#1a1b26
 interval=1
 
 [rofi-power-profiles]
-perf_color=#e0af68
+perf_color=#f7768e
 save_color=#9ece6a
 icon_color=#73daca
 background=#1a1b26

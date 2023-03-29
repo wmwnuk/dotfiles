@@ -23,7 +23,7 @@ case $(xdotool getwindowfocus getwindowclassname) in
     librewolf|LibreWolf|firefox)
         icon=
         ;;
-    Brave-browser|Microsoft-edge)
+    Brave-browser|Microsoft-edge|Vivaldi-stable)
         icon=
         ;;
     Mailspring|Geary)

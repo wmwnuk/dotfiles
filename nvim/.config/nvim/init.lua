@@ -85,3 +85,14 @@ utils.noremap('n', '<leader>pmh', '<Cmd>!pandoc -f markdown -t html -o %:r.html 
 utils.noremap('n', '<leader>pmo', '<Cmd>!pandoc -f markdown -t org -o %:r.md %<CR><C-j>', opts)
 utils.noremap('n', '<leader>pho', '<Cmd>!pandoc -f html -t org -o %:r.org %<CR><C-j>', opts)
 utils.noremap('n', '<leader>phm', '<Cmd>!pandoc -f html -t markdown -o %:r.md %<CR><C-j>', opts)
+
+-- Fzf
+utils.noremap('n', '<leader>fzf', '<Cmd>FzfLua<CR>', opts)
+utils.noremap('n', '<leader>fzr', '<Cmd>FzfLua resume<CR>', opts)
+utils.noremap('n', '<leader>fzs', '<Cmd>FzfLua git_status<CR>', opts)
+utils.noremap('n', '<leader>fzc', '<Cmd>FzfLua git_commits<CR>', opts)
+utils.noremap('n', '<leader>fzb', '<Cmd>FzfLua git_branches<CR>', opts)
+utils.noremap('n', '<leader>fzd', '<Cmd>FzfLua changes<CR>', opts)
+utils.noremap('n', '<leader>ch', '<Cmd>FzfLua command_history<CR>', opts)
+utils.noremap('n', '<leader>ht', '<Cmd>FzfLua help_tags<CR>', opts)
+utils.noremap('n', '<leader>sh', '<Cmd>FzfLua search_history<CR>', opts)

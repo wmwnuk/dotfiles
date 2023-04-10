@@ -30,7 +30,11 @@ vim.env.FZF_DEFAULT_OPTS =
 '--color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff --color=info:#cfc9c2,prompt:#f7768e,pointer:#bb9af7 --color=marker:#9ece6a,spinner:#bb9af7,header:#73daca'
 
 -- nnn.vim
-vim.g['nnn#command'] = 'nnn -a -H -Pp -o'
+if (vim.env.TERM == 'xterm-kitty') then
+    vim.g['nnn#command'] = 'nnn -a -H -Pp -o'
+else
+    vim.g['nnn#command'] = 'nnn -a -H -o'
+end
 
 -- vim-project
 vim.g.vim_project_config = {
@@ -54,6 +58,25 @@ vim.g.vim_project_config = {
     tasks = {},
     debug = 0,
 }
+
+-- -- vim-skeleton
+-- vim.cmd([[
+-- if !exists('g:skeleton_find_template')
+--     let g:skeleton_find_template = []
+-- endif
+--
+-- function! SkelTemplate(path) abort
+--     let s:filename = split(a:path, '/')[-1]
+--     if filereadable('~/.vim/templates/' .. s:filename)
+--         return s:filename
+--     endif
+--
+--     return ''
+-- endfunction
+-- ]])
+--
+-- vim.g.skeleton_find_template.php = vim.cmd[[function('SkelTemplate')]]
+-- vim.g.skeleton_find_template.php = vim.cmd[[function('SkelTemplate')]]
 
 -- suda.vim
 vim.g['suda#nopass'] = 1
@@ -85,14 +108,3 @@ utils.noremap('n', '<leader>pmh', '<Cmd>!pandoc -f markdown -t html -o %:r.html 
 utils.noremap('n', '<leader>pmo', '<Cmd>!pandoc -f markdown -t org -o %:r.md %<CR><C-j>', opts)
 utils.noremap('n', '<leader>pho', '<Cmd>!pandoc -f html -t org -o %:r.org %<CR><C-j>', opts)
 utils.noremap('n', '<leader>phm', '<Cmd>!pandoc -f html -t markdown -o %:r.md %<CR><C-j>', opts)
-
--- Fzf
-utils.noremap('n', '<leader>fzf', '<Cmd>FzfLua<CR>', opts)
-utils.noremap('n', '<leader>fzr', '<Cmd>FzfLua resume<CR>', opts)
-utils.noremap('n', '<leader>fzs', '<Cmd>FzfLua git_status<CR>', opts)
-utils.noremap('n', '<leader>fzc', '<Cmd>FzfLua git_commits<CR>', opts)
-utils.noremap('n', '<leader>fzb', '<Cmd>FzfLua git_branches<CR>', opts)
-utils.noremap('n', '<leader>fzd', '<Cmd>FzfLua changes<CR>', opts)
-utils.noremap('n', '<leader>ch', '<Cmd>FzfLua command_history<CR>', opts)
-utils.noremap('n', '<leader>ht', '<Cmd>FzfLua help_tags<CR>', opts)
-utils.noremap('n', '<leader>sh', '<Cmd>FzfLua search_history<CR>', opts)

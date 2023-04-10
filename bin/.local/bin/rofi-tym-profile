@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+TYM_PROFILE=$(printf " Root\n Archbox\n SigmaNext\n Emacs\n Tumbleweed\n Vivaldi" \
+    | rofi -dmenu -p "" | cut -d " " -f2 | tr '[:upper:]' '[:lower:]')
+
+if [ -n $TYM_PROFILE ]; then
+    case $TYM_PROFILE in
+        main|archbox)
+            tym
+            ;;
+        root)
+            tym -e distrobox-host-exec
+            ;;
+        *)
+            tym -e "distrobox-host-exec distrobox-enter $TYM_PROFILE"
+            ;;
+    esac
+fi

@@ -36,6 +36,8 @@ else
     vim.g['nnn#command'] = 'nnn -a -H -o'
 end
 
+vim.opt.splitright = true
+
 -- vim-project
 vim.g.vim_project_config = {
     config_home = '~/.vim/vim-project-config',
@@ -108,3 +110,13 @@ utils.noremap('n', '<leader>pmh', '<Cmd>!pandoc -f markdown -t html -o %:r.html 
 utils.noremap('n', '<leader>pmo', '<Cmd>!pandoc -f markdown -t org -o %:r.md %<CR><C-j>', opts)
 utils.noremap('n', '<leader>pho', '<Cmd>!pandoc -f html -t org -o %:r.org %<CR><C-j>', opts)
 utils.noremap('n', '<leader>phm', '<Cmd>!pandoc -f html -t markdown -o %:r.md %<CR><C-j>', opts)
+
+-- Use vertical splits
+utils.noremap('n', '<leader>tt', '<Cmd>call SigmaRun("", "v")<CR>', opts)
+
+local lazygit = 'lazygit'
+if vim.env.TERM == 'xterm-kitty' then
+    lazygit = 'lazygit -p'
+end
+
+utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("' .. lazygit .. '", "v")<CR>', opts)

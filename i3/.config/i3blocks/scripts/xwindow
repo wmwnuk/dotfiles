@@ -8,7 +8,7 @@ sep=${sep:=''}
 windowname=$(xdotool getwindowfocus getwindowname | sed 's/\(.\{85\}\).*/\1.../')
 length=$(expr 88 - "$(echo "$windowname"|awk '{print length}')")
 case $(xdotool getwindowfocus getwindowclassname) in
-    kitty|Alacritty|tilix)
+    kitty|Alacritty|tilix|Tym)
         icon=
         ;;
     Vim)

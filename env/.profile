@@ -24,6 +24,8 @@ export EDITOR="/usr/bin/nvim"
 export VISUAL=$EDITOR
 export BAT_THEME="Enki-Tokyo-Night"
 export PAGER="less -R"
+export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux/layouts"
+export TMUXIFIER_TEMPLATE_PATH="$HOME/.tmux/templates"
 
 # nnn config
 BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"

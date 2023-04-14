@@ -2,7 +2,7 @@
 [ "$0" = "/bin/bash" ] && [ -r ~/.bashrc ] && . ~/.bashrc
 
 export TERMINAL=/usr/bin/kitty
-export PATH=$PATH:/sbin:/usr/sbin:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.config/composer/vendor/bin:$HOME/.cargo/bin:$HOME/.magento-cloud/bin:$HOME/Applications:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/podman/bin:$HOME/.config/emacs/bin
+export PATH=$PATH:/sbin:/usr/sbin:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.config/composer/vendor/bin:$HOME/.cargo/bin:$HOME/.magento-cloud/bin:$HOME/Applications:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/podman/bin:$HOME/.config/emacs/bin:$HOME/.tmux/plugins/tmuxifier/bin
 
 export SVDIR=~/.local/service
 
@@ -32,6 +32,7 @@ export NNN_PLUG="p:$HOME/.config/nnn/plugins/preview-tui;f:$HOME/.config/nnn/plu
 NNN_PLUG="t:$HOME/.config/nnn/plugins/preview-tui;p:$HOME/.config/nnn/plugins/preview-tabbed;f:$HOME/.config/nnn/plugins/fzopen"
 
 [ -r /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[ $TERM != 'dumb' ] && which tmuxifier >/dev/null && eval "$(tmuxifier init -)"
 
 xset b off &>/dev/null
 

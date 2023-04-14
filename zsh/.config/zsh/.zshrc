@@ -58,6 +58,7 @@ zsh_add_plugin "hlissner/zsh-autopair"
 # FZF
 zsh_add_file "fzf.zsh"
 zsh_add_file "fzf-ssh.zsh"
+zsh_add_file "fzf-tx.zsh"
 compinit
 
 # Edit line in vim with ctrl-e:
@@ -81,10 +82,10 @@ bindkey  "^[[4~"  end-of-line
 bindkey  "^[[3~"  delete-char
 
 case $TERM in
-    xterm-256color|xterm|linux)
-        [[ ! -f ~/.config/zsh/.p10k.xterm.zsh ]] || source ~/.config/zsh/.p10k.xterm.zsh
+    linux)
+        [[ ! -f ~/.config/zsh/.p10k.linux.zsh ]] || source ~/.config/zsh/.p10k.linux.zsh
         ;;
     *)
-        [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+        [[ ! -f ~/.config/zsh/.p10k.xterm.zsh ]] || source ~/.config/zsh/.p10k.xterm.zsh
         ;;
 esac

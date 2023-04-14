@@ -112,11 +112,11 @@ utils.noremap('n', '<leader>pho', '<Cmd>!pandoc -f html -t org -o %:r.org %<CR><
 utils.noremap('n', '<leader>phm', '<Cmd>!pandoc -f html -t markdown -o %:r.md %<CR><C-j>', opts)
 
 -- Use vertical splits
-utils.noremap('n', '<leader>tt', '<Cmd>call SigmaRun("", "v")<CR>', opts)
+utils.noremap('n', '<leader>tt', '<Cmd>call SigmaRun("", "v")<CR><C-j>', opts)
 
 local lazygit = 'lazygit'
 if vim.env.TERM == 'xterm-kitty' then
     lazygit = 'lazygit -p'
 end
 
-utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("' .. lazygit .. '", "v")<CR>', opts)
+utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("' .. lazygit .. '", "v")<CR><C-j>', opts)

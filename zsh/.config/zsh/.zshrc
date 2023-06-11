@@ -59,6 +59,7 @@ zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_file "fzf.zsh"
 zsh_add_file "fzf-ssh.zsh"
 zsh_add_file "fzf-tx.zsh"
+zsh_add_file "fzf-dbox.zsh"
 compinit
 
 # Edit line in vim with ctrl-e:

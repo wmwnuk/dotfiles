@@ -21,3 +21,4 @@ themes/.local/share/icons/distrobox
 peaclock/.peaclock/history
 bin/.local/bin/dwm
 nvim/.config/nvim/lua/sigma/init.lua
+.uuid

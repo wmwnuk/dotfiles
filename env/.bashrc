@@ -119,3 +119,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion  
   fi
 fi
+
+# fzf default command
+export FZF_DEFAULT_COMMAND="rg -g '!{.git,node_modules,.composer}/' --hidden --no-ignore -l ''"
+# fzf theming
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff --color=info:#cfc9c2,prompt:#f7768e,pointer:#bb9af7 --color=marker:#9ece6a,spinner:#bb9af7,header:#73daca'
+
+bind '"\C-]": "fzf-dbox.sh\C-m"'

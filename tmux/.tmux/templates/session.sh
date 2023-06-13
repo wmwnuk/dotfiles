@@ -6,8 +6,8 @@ session_root "~/Projects/{{SESSION_NAME}}"
 # argument is given, session name will be based on layout file name.
 if initialize_session "{{SESSION_NAME}}"; then
 
-    new_window "neovim"
-    run_cmd "nvim -c 'ProjectOpen {{SESSION_NAME}}'"
+    new_window "emacs"
+    run_cmd "emacs ."
     new_window "lazygit"
     run_cmd "lazygit"
     new_window "zsh"

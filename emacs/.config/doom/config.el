@@ -83,7 +83,7 @@
 
 (after! consult
   (setq consult-ripgrep-args "rg --hidden --no-ignore --null --line-buffered --color=never --max-columns=1000 --path-separator /\
-   --smart-case --no-heading --line-number --search-zip ."))
+   --smart-case --no-heading --with-filename --line-number --search-zip"))
 
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
@@ -112,6 +112,15 @@
 
 (add-hook 'after-save-hook #'sync-to-server)
 
+(use-package! beacon
+  :config
+  (beacon-mode 1))
+
+(defun open-lazygit ()
+  "Open lazygit pane in tmux"
+  (interactive)
+  (shell-command-to-string "tmux split-window -h lazygit"))
+
 (map! :leader
       (:prefix "r"
                "g" #'consult-ripgrep)
@@ -130,6 +139,10 @@
       (:prefix "S"
                "u" #'sync-to-server
                "d" #'sync-from-server))
+
+(map! :leader
+      (:prefix "g"
+               "g" #'open-lazygit))
 
 (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 5)))
 (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 5)))

@@ -144,6 +144,16 @@
       (:prefix "g"
                "g" #'open-lazygit))
 
+(map! :leader
+      (:prefix "f"
+               "f" #'consult-find
+               "b" #'dired))
+
+(evil-define-key
+  '(normal insert visual replace operator motion emacs)
+  'global
+  (kbd "C-n") 'dired)
+
 (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 5)))
 (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 5)))
 

@@ -20,7 +20,7 @@ export NIXPKGS_ALLOW_UNFREE=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 export ZDOTDIR=$HOME/.config/zsh
 export LS_OPTIONS="--color=tty"
-export EDITOR="/usr/bin/nvim"
+export EDITOR="emacsclient -t -a ''"
 export VISUAL=$EDITOR
 export BAT_THEME="Enki-Tokyo-Night"
 export PAGER="less -R"

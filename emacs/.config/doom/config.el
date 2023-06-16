@@ -100,15 +100,15 @@
   "Sync to server with external script."
   (interactive)
   (if (file-exists-p (format "%s.sync" (projectile-project-root)))
-    (shell-command-to-string
-     (format "%s.sync upload $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project))) nil))
+      (shell-command-to-string
+       (format "%s.sync upload $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project))) nil))
 
 (defun sync-from-server ()
   "Sync from server with external script."
   (interactive)
   (if (file-exists-p (format "%s.sync" (projectile-project-root)))
-    (shell-command-to-string
-     (format "%s.sync download $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project))) nil))
+      (shell-command-to-string
+       (format "%s.sync download $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project))) nil))
 
 (add-hook 'after-save-hook #'sync-to-server)
 
@@ -156,5 +156,7 @@
 
 (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 5)))
 (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 5)))
+
+(setq-default tab-width 4)
 
 (load! "iph.el")

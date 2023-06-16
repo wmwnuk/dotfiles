@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ! -f /run/.containerenv ]; then
+if [ ! -f /run/.containerenv ] && [ ! -f /.dockerenv ]; then
     sudo su
 else
     distrobox-host-exec sudo su

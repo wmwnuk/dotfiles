@@ -6,7 +6,7 @@ export PATH=$PATH:/sbin:/usr/sbin:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.con
 
 export SVDIR=~/.local/service
 
-# if [ ! -f /run/.containerenv ]; then
+# if [ ! -f /run/.containerenv ] && [ ! -f /.dockerenv ]; then
 #     if [ ! -f "$XDG_RUNTIME_DIR/ssh-agent-env" ]; then
 #         $HOME/.local/bin/start-ssh-agent.sh
 #     fi

@@ -1,22 +1,15 @@
 . ~/.git_aliases
+. ~/.bash_aliases
 
 alias ls="exa" l='ls -F --icons' la='l -a' ll='l -l' lo='l -al'
-alias md="mkdir"
-alias tarview="tar -tvf"
 alias grep="rg"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
-alias md="mkdir"
-alias tarview="tar -tvf"
 alias find=fd
 alias cat=bat
 alias top=btop htop=btop
-alias apt="doas nala"
 alias du=dust
 alias ps=procs
 alias cd=zix
 alias ssh="TERM=xterm-256color ssh"
 alias nnn="nnn -a -H -Pp" n=nnn
 alias f="nnn -a -H -Pf"
-alias vim=nvim vi=vim
 alias magento-cloud='TERM=xterm-256color magento-cloud'

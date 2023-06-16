@@ -1,0 +1,6 @@
+alias e="emacsclient -t -a ''"
+alias md="mkdir"
+alias tarview="tar -tvf"
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"

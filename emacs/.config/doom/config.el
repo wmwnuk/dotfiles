@@ -33,6 +33,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-tokyo-night)
+(custom-theme-set-faces! 'doom-tokyo-night
+  '(default :background nil))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -100,8 +102,9 @@
   "Sync to server with external script."
   (interactive)
   (if (file-exists-p (format "%s.sync" (projectile-project-root)))
-      (shell-command-to-string
-       (format "%s.sync upload $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project))) nil))
+      (save-window-excursion
+      (async-shell-command
+       (format "%s.sync upload $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project))) nil)))
 
 (defun sync-from-server ()
   "Sync from server with external script."
@@ -158,5 +161,7 @@
 (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 5)))
 
 (setq-default tab-width 4)
+
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . php-mode))
 
 (load! "iph.el")

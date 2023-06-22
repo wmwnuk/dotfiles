@@ -51,3 +51,4 @@
 
 (package! beacon)
 (package! vimrc-mode)
+(package! solaire-mode :disable t)

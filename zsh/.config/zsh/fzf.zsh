@@ -126,3 +126,8 @@ bindkey -M viins '^R' fzf-history-widget
   eval $__fzf_key_bindings_options
   'unset' '__fzf_key_bindings_options'
 }
+
+for file in $(ls "$ZDOTDIR/fzf.d")
+do
+   source "$ZDOTDIR/fzf.d/$file"
+done

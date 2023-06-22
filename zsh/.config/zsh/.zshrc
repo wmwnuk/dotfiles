@@ -57,9 +57,6 @@ zsh_add_plugin "hlissner/zsh-autopair"
 
 # FZF
 zsh_add_file "fzf.zsh"
-zsh_add_file "fzf-ssh.zsh"
-zsh_add_file "fzf-tx.zsh"
-zsh_add_file "fzf-dbox.zsh"
 compinit
 
 # Edit line in vim with ctrl-e:
@@ -73,6 +70,11 @@ source "$HOME/.aliases"
 # override fzf keybinding
 donormalexitmoron() {exit}
 zle -N donormalexitmoron
+
+tmuxkillserver() {tmux kill-server}
+zle -N tmuxkillserver
+
+bindkey  "^[k"    tmuxkillserver
 
 bindkey  "^D"     donormalexitmoron
 

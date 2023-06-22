@@ -6,7 +6,7 @@ function dbox-fzf () {
             zle accept-line
         fi
     else
-        BUFFER="distrobox-host-exec bash -l"
+        BUFFER="distrobox-host-exec zsh -l"
         zle accept-line
     fi
     zle reset-prompt

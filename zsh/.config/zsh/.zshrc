@@ -74,7 +74,7 @@ zle -N donormalexitmoron
 tmuxkillserver() {tmux kill-server}
 zle -N tmuxkillserver
 
-bindkey  "^[k"    tmuxkillserver
+bindkey  "^[K"    tmuxkillserver
 
 bindkey  "^D"     donormalexitmoron
 

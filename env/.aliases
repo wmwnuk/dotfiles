@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 . ~/.git_aliases
 . ~/.bash_aliases
 

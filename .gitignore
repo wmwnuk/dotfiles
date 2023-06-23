@@ -8,6 +8,7 @@ tmp/
 .sync_*
 ide/.config/nvim/plugin
 .zcompcache
+.zcompdump*
 /mpd/.config/mpd/*
 !/mpd/.config/mpd/mpd.conf
 lxsession/.config/lxsession/LXDE

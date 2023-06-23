@@ -1,4 +1,4 @@
-alias e="emacsclient -t -a ''"
+alias emacs="emacsclient -t -a '' -s $(basename ${TMUXIFIER_SESSION_ROOT:=default})" e=emacs
 alias md="mkdir"
 alias tarview="tar -tvf"
 alias grep="grep --color=auto"

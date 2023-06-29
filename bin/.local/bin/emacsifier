@@ -4,7 +4,7 @@ function run_main() {
     kitty -e emacsclient -t -a '' -s "$(whoami)" "$HOME"
 }
 
-selected_session=${1:-$(\find "$HOME/.tmux/layouts" | cut -d'.' -f1 | wofi --dmenu)}
+selected_session=${1:-$(\ls "$HOME/.tmux/layouts" | cut -d'.' -f1 | wofi --dmenu)}
 
 if [ -n "$selected_session" ]; then
     case $selected_session in

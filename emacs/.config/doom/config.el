@@ -91,6 +91,7 @@
   (setq lsp-enable-file-watchers nil))
 
 (after! vterm
+  (setq vterm-shell "/bin/zsh")
   (setq vterm-kill-buffer-on-exit t))
 
 (defun file-path-in-project ()

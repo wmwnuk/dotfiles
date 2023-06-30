@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
+command='emacsclient -c'
+
+if [[ $(basename "$0") == 'emacsifier-nw' ]]; then
+    command='kitty -e emacsclient -t'
+fi
+
 function run_main() {
-    kitty -e emacsclient -t -a '' -s "$(whoami)" "$HOME"
+    $command -a '' -s "$(whoami)" "$HOME"
 }
 
 selected_session=${1:-$(\ls "$HOME/.tmux/layouts" | cut -d'.' -f1 | wofi --dmenu)}
@@ -12,9 +18,9 @@ if [ -n "$selected_session" ]; then
             run_main
             ;;
         *)
-            session_dir=$(grep session_root "$HOME/.tmux/layouts/$selected_session.session.sh" | cut -d'"' -f2)
+            session_dir=$(grep session_root "$HOME/.tmux/layouts/$selected_session.session.sh" | cut -d'"' -f2 | sed "s#~#$HOME#")
             if [ -d "$session_dir" ]; then
-                kitty -e emacsclient -t -a '' -s "$selected_session" "$session_dir"
+                $command -a '' -s "$selected_session" "$session_dir"; exit;
             else
                 run_main
             fi

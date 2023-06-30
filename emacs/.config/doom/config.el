@@ -33,8 +33,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-tokyo-night)
-(custom-theme-set-faces! 'doom-tokyo-night
-  '(default :background nil))
+;; (custom-theme-set-faces! 'doom-tokyo-night
+;;   '(default :background nil))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -120,10 +120,51 @@
   :config
   (beacon-mode 1))
 
+(defun run-in-vterm-kill (process event)
+  "A process sentinel. Kills PROCESS's buffer if it is alive."
+  (let ((b (process-buffer process)))
+    (and (buffer-live-p b)
+         (kill-buffer b))))
+
+(defun run-in-vterm (command)
+  "Execute string COMMAND in a new vterm.
+
+Interactively, prompt for COMMAND with the current buffer's file
+name supplied. When called from Dired, supply the name of the
+file at point."
+  (interactive
+   (list
+    (let* ((f (cond (buffer-file-name)
+                    ((eq major-mode 'dired-mode)
+                     (dired-get-filename nil t))))
+           (filename (concat " " (shell-quote-argument (and f (file-relative-name f))))))
+      (read-shell-command "Terminal command: "
+                          (cons filename 0)
+                          (cons 'shell-command-history 1)
+                          (list filename)))))
+  (with-current-buffer (vterm (concat "*" command "*"))
+    (set-process-sentinel vterm--process #'run-in-vterm-kill)
+    (vterm-send-string command)
+    (vterm-send-return)))
+
+(defun run-in-vterm-and-exit (command)
+  "Execute string COMMAND in a new vterm and exit."
+  (interactive
+   (list
+      (read-shell-command "Terminal command: "
+                          nil
+                          (cons 'shell-command-history 1))))
+  (with-current-buffer (vterm (concat "*" command "*"))
+    (set-process-sentinel vterm--process #'run-in-vterm-kill)
+    (vterm-send-string (concat command ";exit"))
+    (vterm-send-return)))
+
 (defun open-lazygit ()
-  "Open lazygit pane in tmux"
+  "Open lazygit in new window or pane in tmux"
   (interactive)
-  (shell-command-to-string "tmux split-window -h lazygit"))
+  (if window-system
+      (if (get-buffer "*lazygit*") (switch-to-buffer "*lazygit*") (run-in-vterm-and-exit "lazygit"))
+    (shell-command-to-string "tmux split-window -h lazygit")))
 
 (map! :leader
       (:prefix "r"
@@ -147,6 +188,11 @@
 (map! :leader
       (:prefix "g"
                "g" #'open-lazygit))
+
+(map! :leader
+      (:prefix "o"
+               "c" #'run-in-vterm-and-exit
+               "C" #'tun-in-vterm))
 
 (map! :leader
       (:prefix "f"

@@ -171,6 +171,11 @@ file at point."
       (if (get-buffer "*lazygit*") (switch-to-buffer "*lazygit*") (run-in-vterm-and-exit "lazygit"))
     (shell-command-to-string "tmux split-window -h lazygit")))
 
+(defun open-vterm ()
+  "Open Vterm terminal"
+  (interactive)
+  (if (get-buffer "*vterm*") (switch-to-buffer "*vterm*") (+vterm/here nil)))
+
 (map! :leader
       (:prefix "r"
                "g" #'consult-ripgrep)

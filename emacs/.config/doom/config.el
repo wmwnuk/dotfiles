@@ -35,6 +35,10 @@
 (setq doom-theme 'doom-tokyo-night)
 ;; (custom-theme-set-faces! 'doom-tokyo-night
 ;;   '(default :background nil))
+;; (add-hook 'after-make-frame-functions (lambda () (doom/set-frame-opacity 98)))
+
+(set-frame-parameter nil 'alpha-background 98)
+(add-to-list 'default-frame-alist '(alpha-background . 98))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -77,11 +81,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(global-set-key (kbd "C-,") 'embark-dwim)
-
-(add-hook 'minibuffer-setup-hook
-          (lambda ()
-            (local-set-key (kbd "M-p") 'embark-export)))
+(setq-default tab-width 4)
 
 (after! consult
   (setq consult-ripgrep-args "rg --hidden --no-ignore --null --line-buffered --color=never --max-columns=1000 --path-separator /\
@@ -89,6 +89,8 @@
 
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
+
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . php-mode))
 
 (after! vterm
   (setq vterm-shell "/bin/zsh")
@@ -204,11 +206,14 @@ file at point."
   'global
   (kbd "C-n") 'dired)
 
+;; needed only for Emacs without X support
 (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 5)))
 (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 5)))
 
-(setq-default tab-width 4)
+(global-set-key (kbd "C-,") 'embark-dwim)
 
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . php-mode))
+(add-hook 'minibuffer-setup-hook
+          (lambda ()
+            (local-set-key (kbd "M-p") 'embark-export)))
 
 (load! "iph.el")

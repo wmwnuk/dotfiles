@@ -9,6 +9,9 @@
 (setq user-full-name "Wojciech M. Wnuk"
       user-mail-address "laniusone@pm.me")
 
+(setq doom-font "Source Code Pro:pixelsize=14")
+(setq doom-unicode-font "SauceCodePro Nerd Font:pixelsize=14")
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -194,7 +197,7 @@ file at point."
 (map! :leader
       (:prefix "o"
                "c" #'run-in-vterm-and-exit
-               "C" #'tun-in-vterm))
+               "C" #'run-in-vterm))
 
 (map! :leader
       (:prefix "f"

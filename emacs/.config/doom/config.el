@@ -90,6 +90,9 @@
   (setq consult-ripgrep-args "rg --hidden --no-ignore --null --line-buffered --color=never --max-columns=1000 --path-separator /\
    --smart-case --no-heading --with-filename --line-number --search-zip"))
 
+(after! vertico
+  (setq +vertico-consult-fd-args "fd --color=never -i -u -E .git --regex "))
+
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
 
@@ -206,7 +209,7 @@ file at point."
 
 (map! :leader
       (:prefix "f"
-               "f" #'consult-find
+               "f" #'+vertico/consult-fd
                "b" #'dired))
 
 (evil-define-key

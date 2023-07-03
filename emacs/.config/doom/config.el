@@ -36,9 +36,6 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-tokyo-night)
-;; (custom-theme-set-faces! 'doom-tokyo-night
-;;   '(default :background nil))
-;; (add-hook 'after-make-frame-functions (lambda () (doom/set-frame-opacity 98)))
 
 (set-frame-parameter nil 'alpha-background 98)
 (add-to-list 'default-frame-alist '(alpha-background . 98))
@@ -127,6 +124,8 @@
 (use-package! beacon
   :config
   (beacon-mode 1))
+
+(global-visual-line-mode t)
 
 (defun run-in-vterm-kill (process event)
   "A process sentinel. Kills PROCESS's buffer if it is alive."

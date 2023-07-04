@@ -211,8 +211,9 @@ file at point."
                "f" #'+vertico/consult-fd
                "b" #'dired))
 
-(map! :leader
-      ("ESC" #'vterm-send-escape))
+(map! :prefix "C-c"
+       "ESC" #'vterm-send-escape
+       "C-x" #'vterm--self-insert)
 
 (evil-define-key
   '(normal insert visual replace operator motion emacs)

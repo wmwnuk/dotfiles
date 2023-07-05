@@ -121,6 +121,14 @@
 
 (add-hook 'after-save-hook #'sync-to-server)
 
+(defun vterm-ssh-to-server ()
+  "Open SSH session in vterm"
+  (interactive)
+  (run-in-vterm-and-exit (format "ssh %s -A" (completing-read
+                                              "Ssh: "
+                                              (split-string (shell-command-to-string "grep 'Host ' ~/.ssh/config | cut -b 6- | grep -v '\*'") "\n" t)
+                                              nil t))))
+
 (use-package! beacon
   :config
   (beacon-mode 1))
@@ -213,7 +221,8 @@ file at point."
 
 (map! :prefix "C-c"
        "ESC" #'vterm-send-escape
-       "C-x" #'vterm--self-insert)
+       "C-x" #'vterm--self-insert
+       "C-\\" #'vterm-ssh-to-server)
 
 (evil-define-key
   '(normal insert visual replace operator motion emacs)

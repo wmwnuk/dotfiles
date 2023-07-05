@@ -55,6 +55,9 @@ zsh_add_plugin "hlissner/zsh-autopair"
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
 
+# Vterm
+zsh_add_file "vterm.zsh"
+
 # FZF
 zsh_add_file "fzf.zsh"
 compinit
@@ -92,3 +95,5 @@ case $TERM in
         [[ ! -f ~/.config/zsh/.p10k.xterm.zsh ]] || source ~/.config/zsh/.p10k.xterm.zsh
         ;;
 esac
+
+[ $INSIDE_EMACS != '' ] && source "$HOME/.emacs.sh"

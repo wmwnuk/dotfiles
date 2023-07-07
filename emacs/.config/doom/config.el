@@ -219,7 +219,15 @@ file at point."
                "f" #'+vertico/consult-fd
                "b" #'project-dired))
 
-(map! :prefix "C-c"
+(map! :leader
+      :prefix "y"
+      "y" #'consult-yank-from-kill-ring)
+
+(map! :leader
+      (:prefix "o"
+       "\\" #'vterm-ssh-to-server))
+
+(map! :prefix "C-x"
        "C-\\" #'vterm-ssh-to-server)
 
 (map! :after vterm
@@ -227,6 +235,10 @@ file at point."
       :prefix "C-c"
       "ESC" #'vterm-send-escape
       "C-x" #'vterm--self-insert)
+
+(map! :after docker
+      :prefix "C-c"
+      "d" #'docker)
 
 (map! "C-," 'embark-dwim)
 

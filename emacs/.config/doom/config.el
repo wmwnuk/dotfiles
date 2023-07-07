@@ -217,7 +217,7 @@ file at point."
 (map! :leader
       (:prefix "f"
                "f" #'+vertico/consult-fd
-               "b" #'project-dired
+               "b" #'project-dired))
 
 (map! :prefix "C-c"
        "C-\\" #'vterm-ssh-to-server)

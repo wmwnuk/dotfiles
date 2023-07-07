@@ -217,26 +217,26 @@ file at point."
 (map! :leader
       (:prefix "f"
                "f" #'+vertico/consult-fd
-               "b" #'dired))
+               "b" #'project-dired
 
 (map! :prefix "C-c"
-       "ESC" #'vterm-send-escape
-       "C-x" #'vterm--self-insert
        "C-\\" #'vterm-ssh-to-server)
 
-(evil-define-key
-  '(normal insert visual replace operator motion emacs)
-  'global
-  (kbd "C-n") 'dired)
+(map! :after vterm
+      :map vterm-mode-map
+      :prefix "C-c"
+      "ESC" #'vterm-send-escape
+      "C-x" #'vterm--self-insert)
 
-;; needed only for Emacs without X support
-(global-set-key [mouse-4] (lambda () (interactive) (scroll-down 5)))
-(global-set-key [mouse-5] (lambda () (interactive) (scroll-up 5)))
-
-(global-set-key (kbd "C-,") 'embark-dwim)
+(map! "C-," 'embark-dwim)
 
 (add-hook 'minibuffer-setup-hook
           (lambda ()
             (local-set-key (kbd "M-p") 'embark-export)))
+
+;; needed only for Emacs without X support
+;; (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 5)))
+;; (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 5)))
+
 
 (load! "iph.el")

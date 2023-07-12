@@ -110,7 +110,7 @@
   (if (file-exists-p (format "%s.sync" (projectile-project-root)))
       (save-window-excursion
       (async-shell-command
-       (format "%s.sync upload $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project))) nil)))
+       (format "%s.sync upload $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project)))) nil))
 
 (defun sync-from-server ()
   "Sync from server with external script."

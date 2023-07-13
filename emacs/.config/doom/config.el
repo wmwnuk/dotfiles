@@ -99,25 +99,32 @@
   (setq vterm-shell "/bin/zsh")
   (setq vterm-kill-buffer-on-exit t))
 
+(defun current-project-dir ()
+  "Get current project directory"
+  (interactive)
+  (cdr (project-projectile (file-name-directory buffer-file-name))))
+
 (defun file-path-in-project ()
   "Return file path in current project"
   (interactive)
-  (s-replace (projectile-project-root) "" buffer-file-name))
+  (s-replace (current-project-dir) "" buffer-file-name))
 
 (defun sync-to-server ()
   "Sync to server with external script."
   (interactive)
-  (if (file-exists-p (format "%s.sync" (projectile-project-root)))
+  (let ((current-dir (current-project-dir)) (current-file (file-path-in-project)))
+  (if (file-exists-p (format "%s.sync" current-dir))
       (save-window-excursion
       (async-shell-command
-       (format "%s.sync upload $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project)))) nil))
+       (format "%s.sync upload $(dirname %s) $(basename %s)" current-dir current-file current-file)) nil))))
 
 (defun sync-from-server ()
   "Sync from server with external script."
   (interactive)
-  (if (file-exists-p (format "%s.sync" (projectile-project-root)))
+  (let ((current-dir (current-project-dir)) (current-file (file-path-in-project)))
+  (if (file-exists-p (format "%s.sync" current-dir))
       (shell-command-to-string
-       (format "%s.sync download $(dirname %s) $(basename %s)" (projectile-project-root) (file-path-in-project) (file-path-in-project))) nil))
+       (format "%s.sync download $(dirname %s) $(basename %s)" current-dir current-file current-file)) nil)))
 
 (add-hook 'after-save-hook #'sync-to-server)
 

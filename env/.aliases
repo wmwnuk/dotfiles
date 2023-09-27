@@ -3,7 +3,7 @@
 . ~/.git_aliases
 . ~/.bash_aliases
 
-alias ls="exa" l='ls -F --icons' la='l -a' ll='l -l' lo='l -al'
+alias ls="eza" l='ls -F --icons' la='l -a' ll='l -l' lo='l -al'
 alias grep="rg"
 alias find=fd
 alias cat=bat

@@ -93,11 +93,14 @@
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
 
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . php-mode))
+;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . php-mode))
 
 (after! vterm
   (setq vterm-shell "/bin/zsh")
   (setq vterm-kill-buffer-on-exit t))
+
+(after! centaur-tabs
+  (setq centaur-tabs-set-bar 'right))
 
 (defun current-project-dir ()
   "Get current project directory"
@@ -107,7 +110,7 @@
 (defun file-path-in-project ()
   "Return file path in current project"
   (interactive)
-  (s-replace (current-project-dir) "" buffer-file-name))
+  (let ((dir (current-project-dir))) (if dir (s-replace (current-project-dir) "" buffer-file-name) buffer-file-name)))
 
 (defun sync-to-server ()
   "Sync to server with external script."
@@ -280,9 +283,32 @@ file at point."
 
 (map! "C-," 'embark-dwim)
 
+(map! "M-[" 'centaur-tabs-backward-tab)
+(map! "M-]" 'centaur-tabs-forward-tab)
+
 (add-hook 'minibuffer-setup-hook
           (lambda ()
             (local-set-key (kbd "M-p") 'embark-export)))
+
+;; clear projectile cache
+(add-hook 'projectile-after-switch-project-hook (lambda ()
+      (projectile-invalidate-cache nil)))
+
+;;(add-hook 'after-init-hook (lambda ()
+;;    (mapc (lambda (project-root)
+;;	(remhash project-root projectile-project-type-cache)
+;;	(remhash project-root projectile-projects-cache)
+;;	(remhash project-root projectile-projects-cache-time)
+;;	(when projectile-verbose
+;;	    (message "Invalidated Projectile cache for %s."
+;;		(propertize project-root 'face 'font-lock-keyword-face)))
+;;	(when (fboundp 'recentf-cleanup)
+;;	    (recentf-cleanup)))
+;;	(projectile-hash-keys projectile-projects-cache))
+;;    (projectile-serialize-cache)))
+
+;; (add-hook! vterm-mode-hook #'turn-off-evil-mode)
+;; (add-hook! eshell-mode-hook #'turn-off-evil-mode)
 
 ;; needed only for Emacs without X support
 ;; (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 5)))

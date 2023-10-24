@@ -246,9 +246,9 @@ file at point."
                "u" #'sync-to-server
                "d" #'sync-from-server))
 
-(map! :leader
-      (:prefix "g"
-               "g" #'open-lazygit))
+;; (map! :leader
+;;       (:prefix "g"
+;;                "g" #'open-lazygit))
 
 (map! :leader
       (:prefix "o"

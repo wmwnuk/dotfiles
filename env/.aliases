@@ -15,3 +15,5 @@ alias ssh="TERM=xterm-256color ssh"
 alias nnn="nnn -a -H -Pp" n=nnn
 alias f="nnn -a -H -Pf"
 alias magento-cloud='TERM=xterm-256color magento-cloud'
+alias ssh=ssh.exe
+alias rsync="rsync -e 'ssh.exe'"

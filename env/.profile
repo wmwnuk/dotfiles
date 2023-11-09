@@ -20,7 +20,8 @@ export NIXPKGS_ALLOW_UNFREE=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 export ZDOTDIR=$HOME/.config/zsh
 export LS_OPTIONS="--color=tty"
-export EDITOR="emacsclient -t -a '' -s $(basename ${TMUXIFIER_SESSION_ROOT:-"$HOME"})"
+# export EDITOR="emacsclient -t -a '' -s $(basename ${TMUXIFIER_SESSION_ROOT:-"$HOME"})"
+export EDITOR="vim"
 export VISUAL=$EDITOR
 export BAT_THEME="Enki-Tokyo-Night"
 export PAGER="less -R"

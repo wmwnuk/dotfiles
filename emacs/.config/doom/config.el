@@ -46,7 +46,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Projects/Org/")
+(setq org-directory "/mnt/c/Users/Lanius/Proton\ Drive/laniusone/My\ files/Org")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -314,5 +314,26 @@ file at point."
 ;; (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 5)))
 ;; (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 5)))
 
-
 (load! "iph.el")
+;; (load! "c3po.el")
+
+;; WSL specific stuff
+
+(defun wsl/frame-maximize ()
+  (interactive)
+  (set-frame-position nil 5 5)
+  (set-frame-size nil 425 75))
+
+(defun wsl/frame-2-col ()
+  (interactive)
+  (set-frame-position nil 5 5)
+  (set-frame-size nil 280 75))
+
+(defun wsl/frame-1-col ()
+  (interactive)
+  (set-frame-position nil 5 5)
+  (set-frame-size nil 140 75))
+
+(map! "M-<f11>" 'wsl/frame-maximize)
+(map! "M-<f9>" 'wsl/frame-2-col)
+(map! "M-<f8>" 'wsl/frame-1-col)

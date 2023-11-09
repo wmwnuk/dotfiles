@@ -51,5 +51,5 @@
 
 (package! beacon)
 (package! vimrc-mode)
-(package! solaire-mode :disable t)
 (package! ellama)
+;; (package! c3po :recipe (:host github :repo "d1egoaz/c3po.el"))

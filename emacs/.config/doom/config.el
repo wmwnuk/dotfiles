@@ -286,6 +286,24 @@ file at point."
 (map! "M-[" 'centaur-tabs-backward-tab)
 (map! "M-]" 'centaur-tabs-forward-tab)
 
+(map! :leader
+      :prefix "A"
+      "a" #'ellama-ask
+      "f" #'ellama-render
+      "C" #'ellama-change
+      "c" #'ellama-change-code
+      "d" #'ellama-define-word
+      "p" #'ellama-complete-code
+      "e" #'ellama-enhance-code
+      "E" #'ellama-enhance-wording
+      "g" #'ellama-enhance-grammar-spelling
+      "l" #'ellama-make-list
+      "t" #'ellama-make-table
+      "T" #'ellama-translate
+      "s" #'ellama-summarize
+      "S" #'ellama-summarize-webpage
+      "r" #'ellama-code-review)
+
 (add-hook 'minibuffer-setup-hook
           (lambda ()
             (local-set-key (kbd "M-p") 'embark-export)))
@@ -316,6 +334,16 @@ file at point."
 
 (load! "iph.el")
 ;; (load! "c3po.el")
+
+;; ellama
+
+;; (use-package! ellama
+;;   :init
+;;   (setopt ellama-language "en")
+;;   (require 'llm-ollama)
+;;   (setopt ellama-provider
+;;           (make-llm-ollama
+;;            :chat-model "zephyr" :embedding-model "zephyr")))
 
 ;; WSL specific stuff
 

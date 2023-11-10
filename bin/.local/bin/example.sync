@@ -7,7 +7,7 @@ remote_dir="$remote_project/$2"
 file_to_sync="$3"
 
 if [ "upload" == "$1" ];then
-    ssh $remote_server "mkdir -p $remote_dir" && rsync -azcuv "$local_dir/$file_to_sync" "$remote_server:$remote_dir/$file_to_sync"
+    ssh.exe $remote_server "mkdir -p $remote_dir" && rsync -e 'ssh.exe' -azcuv "$local_dir/$file_to_sync" "$remote_server:$remote_dir/$file_to_sync"
 elif [ 'download' == "$1" ];then
     rsync -azcuv "$remote_server:$remote_dir/$file_to_sync" "$local_dir/$file_to_sync"
 fi

@@ -134,7 +134,7 @@
 (defun vterm-ssh-to-server ()
   "Open SSH session in vterm"
   (interactive)
-  (run-in-vterm-and-exit (format "ssh.exe %s -A" (completing-read
+  (run-in-vterm-and-exit (format "ssh %s -A" (completing-read
                                               "Ssh: "
                                               (split-string (shell-command-to-string "grep 'Host ' ~/.ssh/config | cut -b 6- | grep -v '\*'") "\n" t)
                                               nil t))))

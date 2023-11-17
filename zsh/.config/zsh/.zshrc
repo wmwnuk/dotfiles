@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# It seems zshenv doesn't get sourced at all here on SUSE, so let's source it to have our $PATH
+# It seems zshenv doesn't get sourced at all, so let's source it to have our $PATH
 source $HOME/.zshenv
 
 export ZDOTDIR=$HOME/.config/zsh
@@ -95,5 +95,3 @@ case $TERM in
         [[ ! -f ~/.config/zsh/.p10k.xterm.zsh ]] || source ~/.config/zsh/.p10k.xterm.zsh
         ;;
 esac
-
-# [ "$INSIDE_EMACS" != '' ] && source "$HOME/.emacs.sh"

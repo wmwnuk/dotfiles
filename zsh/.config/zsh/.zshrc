@@ -96,4 +96,4 @@ case $TERM in
         ;;
 esac
 
-[ "$INSIDE_EMACS" != '' ] && source "$HOME/.emacs.sh"
+# [ "$INSIDE_EMACS" != '' ] && source "$HOME/.emacs.sh"

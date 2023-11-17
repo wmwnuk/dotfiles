@@ -53,3 +53,6 @@
 (package! vimrc-mode)
 (package! ellama)
 ;; (package! c3po :recipe (:host github :repo "d1egoaz/c3po.el"))
+(package! prettier-js)
+(package! add-node-modules-path)
+(package! blamer)

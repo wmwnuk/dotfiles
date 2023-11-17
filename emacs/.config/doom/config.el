@@ -134,7 +134,7 @@
 (defun vterm-ssh-to-server ()
   "Open SSH session in vterm"
   (interactive)
-  (run-in-vterm-and-exit (format "ssh %s -A" (completing-read
+  (run-in-vterm-and-exit (format "ssh.exe %s -A" (completing-read
                                               "Ssh: "
                                               (split-string (shell-command-to-string "grep 'Host ' ~/.ssh/config | cut -b 6- | grep -v '\*'") "\n" t)
                                               nil t))))
@@ -219,7 +219,7 @@ file at point."
   "Open lazygit in new window or pane in tmux"
   (interactive)
   (if window-system
-      (if (get-buffer "*lazygit*") (switch-to-buffer "*lazygit*") (run-in-vterm-and-exit "lazygit"))
+      (progn (+evil/window-vsplit-and-follow) (if (get-buffer "*lazygit*") (switch-to-buffer "*lazygit*") (run-in-vterm-and-exit "lazygit")))
     (shell-command-to-string "tmux split-window -h lazygit")))
 
 (defun open-vterm ()
@@ -246,9 +246,9 @@ file at point."
                "u" #'sync-to-server
                "d" #'sync-from-server))
 
-;; (map! :leader
-;;       (:prefix "g"
-;;                "g" #'open-lazygit))
+(map! :leader
+      (:prefix "g"
+               "g" #'open-lazygit))
 
 (map! :leader
       (:prefix "o"
@@ -352,6 +352,11 @@ file at point."
   (set-frame-position nil 5 5)
   (set-frame-size nil 425 75))
 
+(defun wsl/frame-half ()
+  (interactive)
+  (set-frame-position nil 5 5)
+  (set-frame-size nil 212 75))
+
 (defun wsl/frame-2-col ()
   (interactive)
   (set-frame-position nil 5 5)
@@ -365,3 +370,40 @@ file at point."
 (map! "M-<f11>" 'wsl/frame-maximize)
 (map! "M-<f9>" 'wsl/frame-2-col)
 (map! "M-<f8>" 'wsl/frame-1-col)
+(map! "M-<f7>" 'wsl/frame-half)
+
+(after! prettier-js
+  (add-hook 'typescript-mode-hook 'prettier-js-mode)
+  (add-hook 'typescript-tsx-mode-hook 'prettier-js-mode)
+  (add-hook 'rjsx-mode-hook 'prettier-js-mode)
+  (add-hook 'js-mode-hook 'prettier-js-mode)
+  (add-hook 'js2-mode-hook 'prettier-js-mode))
+
+(after! typescript-mode
+  (add-hook 'typescript-mode-hook #'add-node-modules-path))
+
+(after! typescript-tsx-mode
+  (add-hook 'typescript-tsx-mode-hook #'add-node-modules-path))
+
+(after! rjsx-mode
+  (add-hook 'rjsx-mode-hook #'add-node-modules-path))
+
+(after! js-mode
+  (add-hook 'js-mode-hook #'add-node-modules-path))
+
+(after! js2-mode
+  (add-hook 'js2-mode-hook #'add-node-modules-path))
+
+(use-package blamer
+  :bind (("C-c i" . blamer-show-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    ;; :height 140
+                    :italic t)))
+  :config
+  (global-blamer-mode 1))

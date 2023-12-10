@@ -7,6 +7,6 @@ alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 alias den=warden
-# alias ssh=ssh.exe
+alias ssh="TERM=xterm-256color ssh"
 alias scp=scp.exe
 alias rsync="rsync -e 'ssh.exe'"

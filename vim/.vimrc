@@ -7,20 +7,17 @@
 "
 " The ULTIMATE Vim config
 
-let g:sigma#use_coc = 1
-let g:sigma#coc_default = 1
+let g:shrike#use_coc = 1
+let g:shrike#coc_default = 1
 
-" call sigma#add('sigmavim/vimrc', {'branch': '6-update-plugins'})
-call sigma#remove('mcchrish/nnn.vim')
-
-call sigma#init()
+call shrike#init()
 
 " General Plugin Config
 let $FZF_DEFAULT_COMMAND = "rg -g '!{.git,node_modules,.composer}/' --hidden --no-ignore -l ''"
 let $FZF_DEFAULT_OPTS = '--color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff --color=info:#cfc9c2,prompt:#f7768e,pointer:#bb9af7 --color=marker:#9ece6a,spinner:#bb9af7,header:#73daca'
 
 " nnn.vim
-let g:nnn#command = 'nnn -a -H -Pp -o'
+" let g:nnn#command = 'nnn -a -H -Pp -o'
 
 " vim-project
 let g:vim_project_config = {

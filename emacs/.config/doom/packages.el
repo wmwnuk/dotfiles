@@ -56,3 +56,5 @@
 (package! prettier-js)
 (package! add-node-modules-path)
 (package! blamer)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))

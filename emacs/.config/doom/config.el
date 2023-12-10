@@ -46,7 +46,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "/mnt/c/Users/Lanius/Proton\ Drive/laniusone/My\ files/Org")
+(setq org-directory "/mnt/c/Users/Lanius/iCloudDrive/iCloud~com~appsonthemove~beorg/files/lanius/Projects/Org")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -227,6 +227,9 @@ file at point."
   (interactive)
   (if (get-buffer "*vterm*") (switch-to-buffer "*vterm*") (+vterm/here nil)))
 
+(after! treemacs
+  (treemacs-project-follow-mode t))
+
 (map! :leader
       (:prefix "r"
                "g" #'consult-ripgrep)
@@ -283,8 +286,8 @@ file at point."
 
 (map! "C-," 'embark-dwim)
 
-(map! "M-[" 'centaur-tabs-backward-tab)
-(map! "M-]" 'centaur-tabs-forward-tab)
+(map! :after better-jumper "M-," 'centaur-tabs-backward-tab)
+(map! :after evil-collection :map evil-normal-state-map "M-." 'centaur-tabs-forward-tab)
 
 (map! :leader
       :prefix "A"
@@ -337,13 +340,13 @@ file at point."
 
 ;; ellama
 
-;; (use-package! ellama
-;;   :init
-;;   (setopt ellama-language "en")
-;;   (require 'llm-ollama)
-;;   (setopt ellama-provider
-;;           (make-llm-ollama
-;;            :chat-model "zephyr" :embedding-model "zephyr")))
+(use-package! ellama
+  :init
+  (setopt ellama-language "en")
+  (require 'llm-ollama)
+  (setopt ellama-provider
+          (make-llm-ollama
+           :chat-model "deepseek-coder:6.7b" :embedding-model "deepseek-coder:6.7b")))
 
 ;; WSL specific stuff
 
@@ -407,3 +410,21 @@ file at point."
                     :italic t)))
   :config
   (global-blamer-mode 1))
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
+
+(setq org-return-follows-link t)
+
+;; No more smartparens
+(turn-off-smartparens-mode)
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)

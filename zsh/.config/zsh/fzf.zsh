@@ -11,6 +11,9 @@
 # - $FZF_ALT_C_COMMAND
 # - $FZF_ALT_C_OPTS
 
+export FZF_TMUX=1
+export FZF_TMUX_OPTS="-p"
+
 # Key bindings
 # ------------
 
@@ -61,7 +64,7 @@ __fsel() {
 
 __fzfcmd() {
   [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
-    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf"
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} " || echo "fzf"
 }
 
 fzf-file-widget() {

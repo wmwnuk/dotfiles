@@ -24,7 +24,7 @@ unsetopt BEEP
 
 # completions
 autoload -Uz compinit
-zstyle ':completion:*' menu select
+# zstyle ':completion:*' menu select
 # zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
 # compinit
@@ -52,6 +52,7 @@ zsh_add_file "zsh-completions"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "Aloxaf/fzf-tab"
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
 

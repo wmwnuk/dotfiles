@@ -1,5 +1,5 @@
 function tk-fzf () {
-  local selected_session=$(tmux list-sessions | cut -d':' -f1 | sort --ignore-case | fzf --query "$LBUFFER")
+  local selected_session=$(tmux list-sessions | cut -d':' -f1 | sort --ignore-case | $(__fzfcmd) --query "$LBUFFER")
   if [ -n "$selected_session" ]; then
     BUFFER="tmux kill-session -t ${selected_session}"
     zle accept-line

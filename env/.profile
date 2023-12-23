@@ -2,7 +2,7 @@
 [ "$0" = "/bin/bash" ] && [ -r ~/.bashrc ] && . ~/.bashrc
 
 export TERMINAL=/usr/bin/kitty
-export PATH=$PATH:/sbin:/usr/sbin:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.config/composer/vendor/bin:$HOME/.cargo/bin:$HOME/.magento-cloud/bin:$HOME/Applications:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/podman/bin:$HOME/.config/emacs/bin:$HOME/.tmux/plugins/tmuxifier/bin:$HOME/go/bin
+export PATH=$PATH:/sbin:/usr/sbin:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.config/composer/vendor/bin:$HOME/.cargo/bin:$HOME/.magento-cloud/bin:$HOME/Applications:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/podman/bin:$HOME/.config/emacs/bin:$HOME/.tmux/plugins/tmuxifier/bin:$HOME/go/bin:/opt/qtools/bin
 
 export SVDIR=~/.local/service
 

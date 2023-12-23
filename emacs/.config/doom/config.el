@@ -10,7 +10,7 @@
       user-mail-address "laniusone@pm.me")
 
 (setq doom-font "Source Code Pro:pixelsize=14")
-(setq doom-unicode-font "SauceCodePro Nerd Font:pixelsize=14")
+(setq doom-symbol-font "SauceCodePro Nerd Font:pixelsize=14")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -35,7 +35,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-tokyo-night)
+;; (setq doom-theme 'doom-tokyo-night)
+(setq doom-theme 'doom-kyoto-night)
 
 (set-frame-parameter nil 'alpha-background 98)
 (add-to-list 'default-frame-alist '(alpha-background . 98))
@@ -428,3 +429,18 @@ file at point."
 ;; No more smartparens
 (turn-off-smartparens-mode)
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+
+(require 'posframe)
+(use-package! vertico-posframe
+  :after vertico
+  :config
+  (vertico-posframe-mode 1))
+
+(when (getenv "WSLENV")
+  (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
+	(cmd-args '("/c" "start")))
+    (when (file-exists-p cmd-exe)
+      (setq browse-url-generic-program  cmd-exe
+	    browse-url-generic-args     cmd-args
+	    browse-url-browser-function 'browse-url-generic
+	    search-web-default-browser 'browse-url-generic))))

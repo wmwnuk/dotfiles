@@ -94,7 +94,8 @@
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
 
-;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . php-mode))
 
 (after! vterm
   (setq vterm-shell "/bin/zsh")
@@ -347,7 +348,8 @@ file at point."
   (require 'llm-ollama)
   (setopt ellama-provider
           (make-llm-ollama
-           :chat-model "deepseek-coder:6.7b" :embedding-model "deepseek-coder:6.7b")))
+           :chat-model "deepseek-coder:6.7b" :embedding-model "deepseek-coder:6.7b"))
+  (shell-command-to-string "tmux list-sessions | grep ollama || tmux new-session -d -s ollama 'ollama serve'"))
 
 ;; WSL specific stuff
 
@@ -444,3 +446,6 @@ file at point."
 	    browse-url-generic-args     cmd-args
 	    browse-url-browser-function 'browse-url-generic
 	    search-web-default-browser 'browse-url-generic))))
+
+(when (getenv "WSLENV")
+  (shell-command-to-string "sudo rm -r /tmp/.X11-unix;ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix"))

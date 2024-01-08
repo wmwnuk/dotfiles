@@ -29,3 +29,5 @@ export TMUXIFIER_TEMPLATE_PATH="$HOME/.tmux/templates"
 [ $TERM != 'dumb' ] && which tmuxifier >/dev/null && eval "$(tmuxifier init -)"
 
 xset b off &>/dev/null
+
+eval $(wsl2-ssh-agent)

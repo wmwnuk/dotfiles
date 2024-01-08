@@ -24,3 +24,4 @@ bin/.local/bin/dwm
 nvim/.config/nvim/lua/sigma/init.lua
 .uuid
 tmux/.tmux/plugins
+tmux/.tmux/layouts

@@ -47,7 +47,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "/mnt/c/Users/Lanius/iCloudDrive/iCloud~com~appsonthemove~beorg/files/lanius/Projects/Org")
+;; (setq org-directory "/mnt/c/Users/Lanius/iCloudDrive/iCloud~com~appsonthemove~beorg/files/lanius/Projects/Org")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -251,9 +251,9 @@ file at point."
                "u" #'sync-to-server
                "d" #'sync-from-server))
 
-(map! :leader
-      (:prefix "g"
-               "g" #'open-lazygit))
+;; (map! :leader
+;;       (:prefix "g"
+;;                "g" #'open-lazygit))
 
 (map! :leader
       (:prefix "o"
@@ -349,7 +349,7 @@ file at point."
   (setopt ellama-provider
           (make-llm-ollama
            :chat-model "deepseek-coder:6.7b" :embedding-model "deepseek-coder:6.7b"))
-  (shell-command-to-string "tmux list-sessions | grep ollama || tmux new-session -d -s ollama 'ollama serve'"))
+  (shell-command-to-string "systemctl --user restart ollama"))
 
 ;; WSL specific stuff
 
@@ -421,7 +421,9 @@ file at point."
               ("<tab>" . 'copilot-accept-completion)
               ("TAB" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+              ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("C-<right>" . 'copilot-accept-completion-by-word)
+              ))
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
@@ -440,12 +442,12 @@ file at point."
 
 (when (getenv "WSLENV")
   (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
-	(cmd-args '("/c" "start")))
+        (cmd-args '("/c" "start")))
     (when (file-exists-p cmd-exe)
       (setq browse-url-generic-program  cmd-exe
-	    browse-url-generic-args     cmd-args
-	    browse-url-browser-function 'browse-url-generic
-	    search-web-default-browser 'browse-url-generic))))
+            browse-url-generic-args     cmd-args
+            browse-url-browser-function 'browse-url-generic
+            search-web-default-browser 'browse-url-generic))))
 
 (when (getenv "WSLENV")
   (shell-command-to-string "sudo rm -r /tmp/.X11-unix;ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix"))
@@ -470,3 +472,100 @@ file at point."
     (insert "\n\n")
     (insert (shell-command-to-string (format "tgpt -q -w '%s' " prompt)))
     (insert "\n\n")))
+
+
+(if (display-graphic-p)
+    nil
+  (progn
+    (custom-set-faces
+     '(default ((t (:background "unspecified-bg"))))
+     )
+    (after! solaire-mode
+      (solaire-global-mode -1))))
+
+(use-package! obsidian
+        :config
+        (obsidian-specify-path "/mnt/c/Users/Lanius/Sync/Obsidian")
+        (global-obsidian-mode t)
+        :custom
+        (obsidian-daily-notes-directory "Dziennik")
+        (obsidian-inbox-directory "Notatki"))
+
+
+(map! :after obsidian
+      :leader
+      (:prefix "n"
+               "f" #'obsidian-search
+               "a" #'obsidian-daily-note
+               "i" #'obsidian-capture
+               "n" #'obsidian-jump
+               ))
+
+;; change org link in dashboard
+(plist-put (alist-get "Open org-agenda" +doom-dashboard-menu-sections nil nil 'equal)
+           :action #'obsidian-daily-note)
+(plist-put (alist-get "Open org-agenda" +doom-dashboard-menu-sections nil nil 'equal)
+           :key "SPC n a")
+
+;; beautify markdown
+(custom-set-faces!
+'(markdown-header-delimiter-face :foreground "#565f89" :height 0.9)
+'(markdown-header-face-1 :height 1.8 :foreground "#f7768e" :weight extra-bold :inherit markdown-header-face)
+'(markdown-header-face-2 :height 1.4 :foreground "#e0af68" :weight extra-bold :inherit markdown-header-face)
+'(markdown-header-face-3 :height 1.2 :foreground "#7dcfff" :weight extra-bold :inherit markdown-header-face)
+'(markdown-header-face-4 :height 1.15 :foreground "#bb9af7" :weight bold :inherit markdown-header-face)
+'(markdown-header-face-5 :height 1.1 :foreground "#7aa2f7" :weight bold :inherit markdown-header-face)
+'(markdown-header-face-6 :height 1.05 :foreground "#b4f9f8" :weight semi-bold :inherit markdown-header-face))
+
+;; unhighlight markdown
+(defvar nb/current-line '(0 . 0)
+  "(start . end) of current line in current buffer")
+(make-variable-buffer-local 'nb/current-line)
+
+(defun nb/unhide-current-line (limit)
+  "Font-lock function"
+  (let ((start (max (point) (car nb/current-line)))
+        (end (min limit (cdr nb/current-line))))
+    (when (< start end)
+      (remove-text-properties start end
+                              '(invisible t display "" composition ""))
+      (goto-char limit)
+      t)))
+
+(defun nb/refontify-on-linemove ()
+  "Post-command-hook"
+  (let* ((start (line-beginning-position))
+         (end (line-beginning-position 2))
+         (needs-update (not (equal start (car nb/current-line)))))
+    (setq nb/current-line (cons start end))
+    (when needs-update
+      (font-lock-fontify-block 3))))
+
+(defun nb/markdown-unhighlight ()
+  "Enable markdown concealling"
+  (interactive)
+  (markdown-toggle-markup-hiding 'toggle)
+  (font-lock-add-keywords nil '((nb/unhide-current-line)) t)
+  (add-hook 'post-command-hook #'nb/refontify-on-linemove nil t))
+
+(add-hook 'markdown-mode-hook #'nb/markdown-unhighlight)
+
+(defun +php/php-cs-fixer ()
+  "Run php-cs-fixer on current buffer."
+  (interactive)
+  (save-buffer)
+  (let ((current-dir (current-project-dir)) (current-file (file-path-in-project)) (command "vendor/bin/php-cs-fixer"))
+    (if (file-exists-p (format "%s/vendor/bin/php-cs-fixer" current-dir))
+        (progn
+          (message (shell-command-to-string
+           (format "warden shell -c '%s fix %s'" command current-file))) (revert-buffer t t)) nil)))
+
+(map! :after php-mode
+      :leader
+      (:prefix "c"
+      "F" #'+php/php-cs-fixer))
+
+;; (defun +php/php-md-linter ()
+;;   "Run php-md on current buffer."
+;;   (interactive)
+;;   )

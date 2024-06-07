@@ -128,3 +128,4 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa
 bind '"\C-]": "fzf-dbox.sh\C-m"'
 
 [ $INSIDE_EMACS != '' ] && source "$HOME/.emacs.sh"
+export PATH="/opt/qtools/bin:$PATH"

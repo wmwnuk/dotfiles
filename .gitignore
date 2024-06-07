@@ -25,3 +25,6 @@ nvim/.config/nvim/lua/sigma/init.lua
 .uuid
 tmux/.tmux/plugins
 tmux/.tmux/layouts
+/emacs/.config/emacs/.local/etc/eshell/history
+/emacs/.config/emacs/.local/etc/eshell/lastdir
+/emacs/.config/emacs/.local/etc/eshell/z

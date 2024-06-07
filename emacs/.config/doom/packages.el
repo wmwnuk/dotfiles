@@ -61,3 +61,5 @@
 (package! posframe)
 (package! vertico-posframe)
 (package! gptel)
+(package! solaire-mode :disable t)
+(package! obsidian)

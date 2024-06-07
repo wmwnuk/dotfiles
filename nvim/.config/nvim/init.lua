@@ -20,6 +20,8 @@ table.insert(lsp_servers, 'elixirls')
 table.insert(lsp_servers, 'vls')
 table.insert(lsp_servers, 'rust_analyzer')
 
+require('sigma').plug.remove('mcchrish/nnn.vim')
+
 require('sigma').setup({
     lsp_servers = lsp_servers
 })

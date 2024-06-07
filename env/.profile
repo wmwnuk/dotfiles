@@ -6,19 +6,19 @@ export PATH=$PATH:/sbin:/usr/sbin:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.con
 
 export SVDIR=~/.local/service
 
-if [ ! -f "$XDG_RUNTIME_DIR/ssh-agent-env" ]; then
-    $HOME/.local/bin/start-ssh-agent.sh
-fi
-if [ -s "$XDG_RUNTIME_DIR/ssh-agent-env" ]; then
-    . $XDG_RUNTIME_DIR/ssh-agent-env
-fi
+# if [ ! -f "$XDG_RUNTIME_DIR/ssh-agent-env" ]; then
+#     $HOME/.local/bin/start-ssh-agent.sh
+# fi
+# if [ -s "$XDG_RUNTIME_DIR/ssh-agent-env" ]; then
+#     . $XDG_RUNTIME_DIR/ssh-agent-env
+# fi
 
 export NIXPKGS_ALLOW_UNFREE=1
 [ -e /nix/var/nix/profiles/default ] && export XDG_DATA_DIRS=$XDG_DATA_DIRS:/nix/var/nix/profiles/default/share
 export QT_QPA_PLATFORMTHEME=qt5ct
 export ZDOTDIR=$HOME/.config/zsh
 export LS_OPTIONS="--color=tty"
-export EDITOR="vim"
+export EDITOR="emacsclient -t -a ''"
 export VISUAL=$EDITOR
 export BAT_THEME="Enki-Tokyo-Night"
 export PAGER="less -R"

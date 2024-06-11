@@ -10,8 +10,11 @@
   (let ((current-dir (current-project-dir)) (current-file (file-path-in-project)) (command "vendor/bin/php-cs-fixer"))
     (if (file-exists-p (format "%s/vendor/bin/php-cs-fixer" current-dir))
         (progn
-          (message (shell-command-to-string
-           (format "warden shell -c '%s fix %s'" command current-file))) (revert-buffer t t)) nil)))
+          (let ((output (shell-command-to-string
+                         (format "warden shell -c '%s fix %s'" command current-file))))
+            (revert-buffer t t)
+            (if (= (length output) 0) (message output) (message "Php-cs-fixer ran successfully.")))))
+    nil))
 
 (defun +php/rector ()
   "Run rector on current buffer."
@@ -24,8 +27,9 @@
               nil
             (shell-command-to-string
              (format "cp ~/.config/doom/rector.php %s" current-dir)))
-          (message (shell-command-to-string
-                    (format "warden shell -c '%s process %s'" command current-file))) (revert-buffer t t)) nil)))
+          (let ((output (shell-command-to-string
+                    (format "warden shell -c '%s process %s'" command current-file)))) (revert-buffer t t)
+                    (if (= (length output) 0) (message output) (message "Rector ran successfully.")))) nil)))
 
 
 (map! :after php-mode

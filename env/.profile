@@ -24,6 +24,7 @@ export BAT_THEME="Enki-Tokyo-Night"
 export PAGER="less -R"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux/layouts"
 export TMUXIFIER_TEMPLATE_PATH="$HOME/.tmux/templates"
+export ANACONDA_HOME="$HOME/.anaconda"
 
 [ -r /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [ $TERM != 'dumb' ] && which tmuxifier >/dev/null && eval "$(tmuxifier init -)"

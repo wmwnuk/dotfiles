@@ -29,10 +29,6 @@
 (setq-default tab-width 4)
 (global-visual-line-mode t)
 
-(use-package! beacon
-  :config
-  (beacon-mode 1))
-
 (use-package blamer
   :bind (("C-c i" . blamer-show-commit-info))
   :defer 20

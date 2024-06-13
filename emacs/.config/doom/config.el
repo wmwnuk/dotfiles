@@ -45,6 +45,9 @@
   :config
   (global-blamer-mode 1))
 
+(require 'dired-x)
+  (setq dired-omit-files (concat dired-omit-files "\\|^.obsidian$\\|^.+.edtz$\\|^.trash$\\|^System Volume Information$\\|^$RECYCLE.BIN$\\|^.+.tmp$\\|^.stfolder$\\|^.stversions$\\|^$Temp$\\|^$Recycle.Bin$\\|^DumpStack.log$\\|^Recovery$\\|^$WinREAgent$\\|^NTUSER.+\\|^ntuser.+"))
+
 ;; change org link in dashboard
 (plist-put (alist-get "Open org-agenda" +doom-dashboard-menu-sections nil nil 'equal)
            :action #'obsidian-daily-note)
@@ -156,3 +159,31 @@
 
 (when (getenv "WSLENV")
   (shell-command-to-string "sudo rm -r /tmp/.X11-unix;ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix"))
+
+;; Wezterm
+(defun +wezterm/split ()
+  "Split wezterm"
+  (interactive)
+  (let ((directory (current-project-dir))
+        (command (if (getenv "WSLENV") "wezterm.exe" "wezterm")))
+  (shell-command-to-string (format "%s cli split-pane --percent 25 --cwd %s -- wsl" command directory))))
+
+(defun +wezterm/vsplit ()
+  "Vsplit wezterm"
+  (interactive)
+  (let ((directory (current-project-dir))
+        (command (if (getenv "WSLENV") "wezterm.exe" "wezterm")))
+  (shell-command-to-string (format "%s cli split-pane --right --percent 25 --cwd %s -- wsl" command directory))))
+
+(defun +wezterm/lazygit ()
+  "Start lazygit in wezterm"
+  (interactive)
+  (let ((directory (current-project-dir))
+        (command (if (getenv "WSLENV") "wezterm.exe" "wezterm")))
+  (shell-command-to-string (format "%s cli split-pane --right --percent 25 --cwd %s -- wsl lazygit" command directory))))
+
+(map! :leader
+      (:prefix "o"
+               "w" #'+wezterm/split
+               "W" #'+wezterm/vsplit
+               "g" #'+wezterm/lazygit))

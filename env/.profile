@@ -4,14 +4,9 @@
 export TERMINAL=/usr/bin/kitty
 export PATH=$PATH:/sbin:/usr/sbin:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.config/composer/vendor/bin:$HOME/.cargo/bin:$HOME/.magento-cloud/bin:$HOME/Applications:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/podman/bin:$HOME/.config/emacs/bin:$HOME/.tmux/plugins/tmuxifier/bin:$HOME/go/bin:/opt/qtools/bin
 
-export SVDIR=~/.local/service
+export PODMAN_IGNORE_CGROUPSV1_WARNING=1
 
-# if [ ! -f "$XDG_RUNTIME_DIR/ssh-agent-env" ]; then
-#     $HOME/.local/bin/start-ssh-agent.sh
-# fi
-# if [ -s "$XDG_RUNTIME_DIR/ssh-agent-env" ]; then
-#     . $XDG_RUNTIME_DIR/ssh-agent-env
-# fi
+export SVDIR=~/.local/service
 
 export NIXPKGS_ALLOW_UNFREE=1
 [ -e /nix/var/nix/profiles/default ] && export XDG_DATA_DIRS=$XDG_DATA_DIRS:/nix/var/nix/profiles/default/share

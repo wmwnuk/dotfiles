@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # It seems zshenv doesn't get sourced at all, so let's source it to have our $PATH
 source $HOME/.zshenv
 
@@ -87,15 +80,6 @@ bindkey  "^[[1~"  beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[4~"  end-of-line
 bindkey  "^[[3~"  delete-char
-
-case $TERM in
-    linux)
-        [[ ! -f ~/.config/zsh/.p10k.linux.zsh ]] || source ~/.config/zsh/.p10k.linux.zsh
-        ;;
-    *)
-        [[ ! -f ~/.config/zsh/.p10k.xterm.zsh ]] || source ~/.config/zsh/.p10k.xterm.zsh
-        ;;
-esac
 
 ~/.local/bin/fix-ssh-agent.sh >/dev/null 2>&1
 doas rm -r /tmp/.X11-unix;ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix

@@ -41,5 +41,5 @@
 if [ $TERM = "dumb" ]; then
     unsetopt zle && PS1='$ '
 else
-    zsh_add_plugin "romkatv/powerlevel10k"
+    eval "$(oh-my-posh init zsh --config ~/.config/zsh/omp/tokyonight_storm.omp.json)"
 fi

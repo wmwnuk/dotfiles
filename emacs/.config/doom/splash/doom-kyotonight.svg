@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="353.41528"
+   width="299.17374"
+   version="1.0"
+   viewBox="-76.17645 -128.1515 164.5944 339.68024"
+   id="svg7"
+   sodipodi:docname="doom-kyotonight.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   inkscape:export-filename="doom-kyotonight.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.92166667"
+     inkscape:cx="159.49367"
+     inkscape:cy="179.566"
+     inkscape:window-width="3440"
+     inkscape:window-height="1369"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7" />
+  <defs
+     id="defs5">
+    <linearGradient
+       id="b">
+      <stop
+         offset="0"
+         stop-color="#411f5d"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#5b2a85"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="a">
+      <stop
+         offset="0"
+         stop-color="#8381c5"
+         id="stop3" />
+      <stop
+         offset=".566"
+         stop-color="#7e55b3"
+         stop-opacity=".996"
+         id="stop4" />
+      <stop
+         offset="1"
+         stop-color="#a52ecb"
+         stop-opacity=".992"
+         id="stop5" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#a"
+       id="d"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.87386,0,0,0.82818,244.806,249.69)"
+       spreadMethod="pad"
+       x1="-122.202"
+       y1="-161.851"
+       x2="236.614"
+       y2="300.73999" />
+    <linearGradient
+       xlink:href="#b"
+       id="e"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.98685,0,0,0.98685,1.833,1.934)"
+       x1="447.80899"
+       y1="396.60699"
+       x2="173.94501"
+       y2="66.017998" />
+    <filter
+       id="c"
+       x="-0.05365821"
+       width="1.1073164"
+       y="-0.053115636"
+       height="1.1062313"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         stdDeviation="8.785"
+         id="feGaussianBlur5" />
+    </filter>
+  </defs>
+  <path
+     d="m -64.600013,211.09864 c 0,0 19.73803,1.396 45.131069,-0.842 10.2830175,-0.906 49.327073,-4.74 78.517118,-11.142 0,0 35.590042,-7.617 54.630016,-14.634 19.92297,-7.341 30.76396,-13.573 35.64295,-22.401 -0.212,-1.81 1.503,-8.225 -7.68499,-12.078 -23.48796,-9.852 -50.729934,-8.07 -104.633009,-9.213 -59.778088,-2.054 -79.663121,-12.06 -90.256136,-20.118 -10.158015,-8.176 -5.050009,-30.792997 38.47406,-50.714997 21.9250285,-10.61 107.870151,-30.187 107.870151,-30.187 -28.944033,-14.308 -82.918117,-39.45999975 -94.0131325,-44.8899998 -9.7300125,-4.764 -25.3030365,-11.9360002 -28.6780425,-20.6140002 -3.827006,-8.331 9.038015,-15.507 16.225027,-17.563 23.1440305,-6.676 55.818081,-10.825 85.554127,-11.29 14.948021,-0.235 17.374021,-1.197 17.374021,-1.197 20.623984,-3.42 34.200964,-17.531 28.543974,-39.878 -5.07799,-22.810003 -31.860975,-36.214003 -57.313013,-31.574003 -23.969037,4.37 -81.738121,21.15 -81.738121,21.15 71.407106,-0.618 83.359124,0.574 88.697133,8.037003 3.152002,4.407 -1.433003,10.45 -20.477033,13.56 -20.733034,3.387 -63.831094,7.465 -63.831094,7.465 -41.345066,2.455 -70.468111,2.62 -79.203123,21.113 -5.706009,12.082 6.085009,22.763 11.254018,29.45 21.840033,24.2880002 53.388081,37.388 73.695114,47.035 7.64001,3.63 30.058042,10.484 30.058042,10.484 -65.878099,-3.624 -113.400171,16.605 -141.276183,39.896 -31.529,29.162997 -17.582,63.923997 47.012039,85.326997 38.15206,12.641 57.07309,18.587 113.982175,13.462 33.520051,-1.807 38.80406,-0.731 39.13806,2.02 0.469999,3.871 -37.231057,13.49 -47.524076,16.46 -26.185037,7.553 -94.828141,22.804 -95.171141,22.878 z"
+     fill="#fff"
+     fill-rule="evenodd"
+     id="path7"
+     style="fill:#f7768e;fill-opacity:1" />
+</svg>

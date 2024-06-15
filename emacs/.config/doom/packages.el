@@ -13,3 +13,4 @@
 (package! gptel)
 (package! solaire-mode :disable t)
 (package! obsidian)
+(package! beacon)

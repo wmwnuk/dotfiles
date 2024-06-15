@@ -11,7 +11,10 @@
 ;; Theme settings
 (setq doom-theme 'doom-kyoto-night)
 (custom-theme-set-faces! 'doom-kyoto-night
-  '(line-number :foreground "#545c7e"))
+  '(line-number :foreground "#565f89"))
+  ;; '(doom-dashboard-banner :foreground "#f7768e"))
+(setq fancy-splash-image (concat doom-user-dir "splash/doom-kyotonight.webp"))
+;; (load! "splash/doom-kyotonight.el")
 
 ;;;; Remove background in terminal to show waifu
 (if (display-graphic-p)
@@ -23,13 +26,14 @@
     (after! solaire-mode
       (solaire-global-mode -1))))
 
-(set-frame-parameter nil 'alpha-background 98)
-(add-to-list 'default-frame-alist '(alpha-background . 98))
+(set-frame-parameter nil 'alpha-background 85)
+(add-to-list 'default-frame-alist '(alpha-background . 85))
 
 ;; Editor settings
 (setq display-line-numbers-type 'relative)
 (setq-default tab-width 4)
 (global-visual-line-mode t)
+(pixel-scroll-precision-mode t)
 
 (use-package blamer
   :bind (("C-c i" . blamer-show-commit-info))
@@ -44,6 +48,10 @@
                     :italic t)))
   :config
   (global-blamer-mode 1))
+
+(use-package! beacon
+  :config
+  (beacon-mode 1))
 
 (require 'dired-x)
   (setq dired-omit-files (concat dired-omit-files "\\|^.obsidian$\\|^.+.edtz$\\|^.trash$\\|^System Volume Information$\\|^$RECYCLE.BIN$\\|^.+.tmp$\\|^.stfolder$\\|^.stversions$\\|^$Temp$\\|^$Recycle.Bin$\\|^DumpStack.log$\\|^Recovery$\\|^$WinREAgent$\\|^NTUSER.+\\|^ntuser.+"))
@@ -67,10 +75,10 @@
 ;; Search settings
 (after! consult
   (setq consult-ripgrep-args "rg --hidden --no-ignore --null --line-buffered --color=never --max-columns=1000 --path-separator /\
-   --smart-case --no-heading --with-filename --line-number --search-zip"))
+   --smart-case --no-heading --with-filename --line-number --search-zip -g '!{.git,node_modules,.composer,generated,var}/'"))
 
 (after! vertico
-  (setq +vertico-consult-fd-args "fd --color=never -i -u -E .git --regex "))
+  (setq +vertico-consult-fd-args "fd --color=never -i -u --no-ignore-vcs -H -E .git -E generated -E var -E node_modules --regex "))
 
 (after! treemacs
   (treemacs-project-follow-mode t))

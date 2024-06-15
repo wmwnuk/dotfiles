@@ -127,5 +127,12 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa
 
 bind '"\C-]": "fzf-dbox.sh\C-m"'
 
-[ $INSIDE_EMACS != '' ] && source "$HOME/.emacs.sh"
+[ -n "$INSIDE_EMACS" ] && source "$HOME/.emacs.sh"
 export PATH="/opt/qtools/bin:$PATH"
+
+
+if [ "$TERM" = "dumb" ]; then
+    unsetopt zle && PS1='$ '
+else
+    eval "$(oh-my-posh init bash --config ~/.config/omp/tokyonight_storm.omp.json)"
+fi

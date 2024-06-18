@@ -75,7 +75,7 @@
 ;; Search settings
 (after! consult
   (setq consult-ripgrep-args "rg --hidden --no-ignore --null --line-buffered --color=never --max-columns=1000 --path-separator /\
-   --smart-case --no-heading --with-filename --line-number --search-zip -g '!{.git,node_modules,.composer,generated,var}/'"))
+   --smart-case --no-heading --with-filename --line-number --search-zip")) ;; -g '!{.git,node_modules,.composer,generated,var}/'")) ;; FIXME
 
 (after! vertico
   (setq +vertico-consult-fd-args "fd --color=never -i -u --no-ignore-vcs -H -E .git -E generated -E var -E node_modules --regex "))

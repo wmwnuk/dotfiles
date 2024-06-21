@@ -51,6 +51,10 @@
   :config
   (beacon-mode 1))
 
+(require 'posframe)
+(require 'vertico-posframe)
+(vertico-posframe-mode 1)
+
 (require 'dired-x)
   (setq dired-omit-files (concat dired-omit-files "\\|^.obsidian$\\|^.+.edtz$\\|^.trash$\\|^System Volume Information$\\|^$RECYCLE.BIN$\\|^.+.tmp$\\|^.stfolder$\\|^.stversions$\\|^$Temp$\\|^$Recycle.Bin$\\|^DumpStack.log$\\|^Recovery$\\|^$WinREAgent$\\|^NTUSER.+\\|^ntuser.+"))
 

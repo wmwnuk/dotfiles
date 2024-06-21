@@ -41,7 +41,7 @@
   (blamer-min-offset 70)
   :custom-face
   (blamer-face ((t :foreground "#7a88cf"
-                    :background nil
+                    :background "unspecified"
                     ;; :height 140
                     :italic t)))
   :config
@@ -61,14 +61,8 @@
            :key "SPC n a")
 
 ;; No more smartparens
-(turn-off-smartparens-mode)
+(smartparens-global-mode -1)
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
-
-(require 'posframe)
-(use-package! vertico-posframe
-  :after vertico
-  :config
-  (vertico-posframe-mode 1))
 
 ;; Search settings
 (after! consult
@@ -88,7 +82,7 @@
 
 (map! :leader
       (:prefix "f"
-               "f" #'+vertico/consult-fd
+               "f" #'+vertico/consult-fd-or-find
                "b" #'project-dired))
 
 (map! :leader
@@ -131,7 +125,8 @@
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)
               ("C-<right>" . 'copilot-accept-completion-by-word)
-              ))
+              )
+  :config (add-to-list 'copilot-major-mode-alist '("nxml" . "xml")))
 
 (load! "ollama.el")
 (load! "tgpt.el")

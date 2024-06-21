@@ -8,9 +8,7 @@
 (package! blamer)
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
-(package! posframe)
-(package! vertico-posframe)
-(package! gptel)
 (package! solaire-mode :disable t)
 (package! obsidian)
 (package! beacon)
+(package! transient :pin "4f0fe22cafb6c2c8c8749a9037351ed01cf121ef")

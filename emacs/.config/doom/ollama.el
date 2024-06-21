@@ -2,7 +2,7 @@
 
 (use-package! ellama
   :init
-  (setopt ellama-language "en")
+  (setopt ellama-language "English")
   (require 'llm-ollama)
   (setopt ellama-provider
           (make-llm-ollama
@@ -10,19 +10,23 @@
   (shell-command-to-string "systemctl --user restart ollama"))
 
 (map! :leader
-      :prefix "A"
-      "a" #'ellama-ask
-      "f" #'ellama-render
-      "C" #'ellama-change
-      "c" #'ellama-change-code
-      "d" #'ellama-define-word
-      "p" #'ellama-complete-code
-      "e" #'ellama-enhance-code
-      "E" #'ellama-enhance-wording
-      "g" #'ellama-enhance-grammar-spelling
-      "l" #'ellama-make-list
-      "t" #'ellama-make-table
-      "T" #'ellama-translate
-      "s" #'ellama-summarize
-      "S" #'ellama-summarize-webpage
-      "r" #'ellama-code-review)
+      :prefix "e"
+      :desc "Ellama"
+      "c c" #'ellama-complete-code
+      "c a" #'ellama-add-code
+      "c e" #'ellama-edit-code
+      "c i" #'ellama-enhance-code
+      "c r" #'ellama-code-review
+      "s s" #'ellama-summarize
+      "s w" #'ellama-summarize-webpage
+      "i w" #'ellama-enhance-wording
+      "i g" #'ellama-enhance-grammar-spelling
+      "m c" #'ellama-make-concise
+      "m l" #'ellama-make-list
+      "m t" #'ellama-make-table
+      "m f" #'ellama-render
+      "a a" #'ellama-ask-about
+      "a i" #'ellama-chat
+      "t t" #'ellama-translate
+      "t c" #'ellama-change
+      "d w" #'ellama-define-word)

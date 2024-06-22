@@ -8,7 +8,6 @@
 (package! blamer :pin "281963da789fe9e47ce9efc4f7a9c4d19bf3a405")
 (package! copilot
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist")) :pin "733bff26450255e092c10873580e9abfed8a81b8")
-(package! solaire-mode :disable t)
 (package! obsidian :pin "5aeb88cec9814be2b0b047453d797a29628b5a91")
 (package! beacon :pin "85261a928ae0ec3b41e639f05291ffd6bf7c231c")
 (package! transient :pin "4f0fe22cafb6c2c8c8749a9037351ed01cf121ef")

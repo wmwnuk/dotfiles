@@ -10,9 +10,9 @@
 
 ;; Theme settings
 (setq doom-theme 'doom-kyoto-night)
-(custom-theme-set-faces! 'doom-kyoto-night
-  '(line-number :foreground "#565f89")
-  '(doom-dashboard-banner :foreground "#f7768e"))
+;; (custom-theme-set-faces! 'doom-kyoto-night
+;;   '(line-number :foreground "#565f89")
+;;   '(doom-dashboard-banner :foreground "#f7768e"))
 
 ;;;; Remove background in terminal to show waifu
 (if (display-graphic-p)
@@ -58,6 +58,20 @@
 (require 'dired-x)
   (setq dired-omit-files (concat dired-omit-files "\\|^.obsidian$\\|^.+.edtz$\\|^.trash$\\|^System Volume Information$\\|^$RECYCLE.BIN$\\|^.+.tmp$\\|^.stfolder$\\|^.stversions$\\|^$Temp$\\|^$Recycle.Bin$\\|^DumpStack.log$\\|^Recovery$\\|^$WinREAgent$\\|^NTUSER.+\\|^ntuser.+"))
 
+(after! treemacs
+  (treemacs-project-follow-mode t))
+
+(with-eval-after-load 'treemacs
+
+  (defun treemacs-ignore-obsidian (filename absolute-path)
+    (or (string-equal filename ".obsidian")
+        (string-equal filename ".trash")
+        (string-equal filename ".projectile")
+        (string-suffix-p ".edtz" absolute-path)))
+
+  (add-to-list 'treemacs-ignored-file-predicates #'treemacs-ignore-obsidian))
+
+
 ;; change org link in dashboard
 (plist-put (alist-get "Open org-agenda" +doom-dashboard-menu-sections nil nil 'equal)
            :action #'obsidian-daily-note)
@@ -76,8 +90,6 @@
 (after! vertico
   (setq +vertico-consult-fd-args "fd --color=never -i -u --no-ignore-vcs -H -E .git -E generated -E var -E node_modules --regex "))
 
-(after! treemacs
-  (treemacs-project-follow-mode t))
 
 (map! :leader
       (:prefix "r"

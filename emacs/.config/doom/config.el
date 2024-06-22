@@ -10,9 +10,6 @@
 
 ;; Theme settings
 (setq doom-theme 'doom-kyoto-night)
-;; (custom-theme-set-faces! 'doom-kyoto-night
-;;   '(line-number :foreground "#565f89")
-;;   '(doom-dashboard-banner :foreground "#f7768e"))
 
 ;;;; Remove background in terminal to show waifu
 (if (display-graphic-p)

@@ -21,7 +21,7 @@ done)|sort")
                   (minibuffer . only)
                   (fullscreen . 0) ; no fullscreen
                   (undecorated . t) ; remove title bar
-                  ;;(auto-raise . t) ; focus on this frame
+                  (auto-raise . t) ; focus on this frame
                   ;;(tool-bar-lines . 0)
                   ;;(menu-bar-lines . 0)
                   (internal-border-width . 10)

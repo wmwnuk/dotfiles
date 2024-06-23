@@ -122,3 +122,5 @@ if vim.env.TERM == 'xterm-kitty' then
 end
 
 utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("' .. lazygit .. '", "v")<CR><C-j>', opts)
+
+utils.noremap('n', '<leader>o-', '<Cmd>Ex<CR>', opts)

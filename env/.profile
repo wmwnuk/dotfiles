@@ -22,9 +22,7 @@ export TMUXIFIER_TEMPLATE_PATH="$HOME/.tmux/templates"
 export ANACONDA_HOME="$HOME/.anaconda"
 
 # check if Ollama is running and start it if not
-if ! pgrep -f "ollama" &>/dev/null; then
-  ollama serve &>/dev/null & disown
-fi
+screen -list | grep ollama || screen -dmS ollama -- ollama serve &>/dev/null
 
 [ -r /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [ $TERM != 'dumb' ] && which tmuxifier >/dev/null && eval "$(tmuxifier init -)"

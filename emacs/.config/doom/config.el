@@ -68,6 +68,13 @@
 
   (add-to-list 'treemacs-ignored-file-predicates #'treemacs-ignore-obsidian))
 
+(+global-word-wrap-mode +1)
+(global-visual-line-mode +1)
+
+(map! :after evil-collection :map evil-normal-state-map "<up>" 'evil-previous-visual-line)
+(map! :after evil-collection :map evil-normal-state-map "<down>" 'evil-next-visual-line)
+(map! :after evil-collection :map evil-normal-state-map "k" 'evil-previous-visual-line)
+(map! :after evil-collection :map evil-normal-state-map "j" 'evil-next-visual-line)
 
 ;; change org link in dashboard
 (plist-put (alist-get "Open org-agenda" +doom-dashboard-menu-sections nil nil 'equal)
@@ -82,11 +89,8 @@
 ;; Search settings
 (after! consult
   (setq consult-ripgrep-args "rg --hidden --no-ignore --null --line-buffered --color=never --max-columns=1000 --path-separator /\
-   --smart-case --no-heading --with-filename --line-number --search-zip")) ;; -g '!{.git,node_modules,.composer,generated,var}/'")) ;; FIXME
-
-(after! vertico
-  (setq +vertico-consult-fd-args "fd --color=never -i -u --no-ignore-vcs -H -E .git -E generated -E var -E node_modules --regex "))
-
+   --smart-case --no-heading --with-filename --line-number --search-zip") ;; -g '!{.git,node_modules,.composer,generated,var}/'")) ;; FIXME
+  (setq consult-fd-args "fd --color=never -i -u --no-ignore-vcs -H -E .git -E generated -E var -E node_modules --regex "))
 
 (map! :leader
       (:prefix "r"
@@ -95,7 +99,8 @@
 
 (map! :leader
       (:prefix "f"
-               "f" #'+vertico/consult-fd-or-find
+               "f" #'consult-fd
+               "w" #'consult-ripgrep
                "b" #'project-dired))
 
 (map! :leader
@@ -141,7 +146,30 @@
               )
   :config (add-to-list 'copilot-major-mode-alist '("nxml" . "xml")))
 
-(load! "ollama.el")
+(use-package! gptel
+  :config
+  (setq
+   gptel-model "nous-hermes-2-mistral-dpo:latest"
+   gptel-backend (gptel-make-ollama "Ollama"
+                   :host "localhost:11434"
+                   :stream t
+                   :models '("nous-hermes-2-mistral-dpo:latest")))
+  (gptel-make-ollama "Ollama"             ;Any name of your choosing
+    :host "localhost:11434"               ;Where it's running
+    :stream t
+    :models '("nous-hermes-2-mistral-dpo:latest" "codegemma:7b" "codegemma:2b"
+              "dolphin-mixtral:latest" "codellama:latest" "deepseek-coder:6.7b"
+              "deepseek-coder:base" "dolphin-mistral:latest" "llama3:8b" "llama2:latest"
+              "llama3:instruct" "mistral:latest" "openchat:latest" "phi3:latest"
+              "zephyr:latest" "starcoder:latest" "gemma:latest" "nomic-embed-text:latest"
+              "dolphin-llama3:8b" "primeagen:latest" "reaperbuddy:latest"))
+  (map! :leader
+        (:prefix ("e" . "gptel")
+                 "a" #'gptel-send
+                 :desc "Open chat buffer" "c" #'gptel
+                 "i" #'gptel-menu
+                 "x" #'gptel-abort)))
+
 (load! "tgpt.el")
 
 ;; Various settings and fixes

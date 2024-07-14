@@ -30,19 +30,19 @@
 (global-visual-line-mode t)
 (pixel-scroll-precision-mode t)
 
-(use-package blamer
-  :bind (("C-c i" . blamer-show-commit-info))
-  :defer 20
-  :custom
-  (blamer-idle-time 0.3)
-  (blamer-min-offset 70)
-  :custom-face
-  (blamer-face ((t :foreground "#7a88cf"
-                    :background "unspecified"
-                    ;; :height 140
-                    :italic t)))
-  :config
-  (global-blamer-mode 1))
+;; (use-package blamer
+;;   :bind (("C-c i" . blamer-show-commit-info))
+;;   :defer 20
+;;   :custom
+;;   (blamer-idle-time 0.3)
+;;   (blamer-min-offset 70)
+;;   :custom-face
+;;   (blamer-face ((t :foreground "#7a88cf"
+;;                     :background "unspecified"
+;;                     ;; :height 140
+;;                     :italic t)))
+;;   :config
+;;   (global-blamer-mode 1))
 
 (use-package! beacon
   :config
@@ -127,6 +127,7 @@
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
 
+
 ;;;; PHP
 (load! "iph.el")
 (load! "php.el")
@@ -173,11 +174,11 @@
 (load! "tgpt.el")
 
 ;; Various settings and fixes
-(after! centaur-tabs
-  (setq centaur-tabs-set-bar 'right))
+;; (after! centaur-tabs
+;;   (setq centaur-tabs-set-bar 'right))
 
-(map! :after better-jumper "M-," 'centaur-tabs-backward-tab)
-(map! :after evil-collection :map evil-normal-state-map "M-." 'centaur-tabs-forward-tab)
+;; (map! :after better-jumper "M-," 'centaur-tabs-backward-tab)
+;; (map! :after evil-collection :map evil-normal-state-map "M-." 'centaur-tabs-forward-tab)
 
 ;; clear projectile cache
 (add-hook 'projectile-after-switch-project-hook (lambda ()

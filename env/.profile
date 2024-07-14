@@ -26,4 +26,6 @@ export ANACONDA_HOME="$HOME/.anaconda"
 
 xset b off &>/dev/null
 
+init-scripts.sh &>/dev/null
+
 eval $(wsl2-ssh-agent)

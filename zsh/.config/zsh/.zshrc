@@ -82,4 +82,3 @@ bindkey  "^[[4~"  end-of-line
 bindkey  "^[[3~"  delete-char
 
 ~/.local/bin/fix-ssh-agent.sh >/dev/null 2>&1
-doas rm -r /tmp/.X11-unix;ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix

@@ -7,8 +7,10 @@ alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 alias den=warden
-# alias ssh="TERM=xterm-256color ssh.exe"
+alias ssh="TERM=xterm-256color ssh"
+alias ssh.exe="TERM=xterm-256color ssh.exe"
 alias map-vnc="ssh davyjones -L 9901:localhost:5901"
+alias ollama="ollama.exe"
 
 gbdefault() {
   git remote show origin | sed -n '/HEAD branch/s/.*: //p'
